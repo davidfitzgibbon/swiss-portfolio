@@ -3,7 +3,6 @@ import { Mona_Sans } from 'next/font/google';
 import { Header } from "@/components/Header";
 import "./globals.css";
 import { Separator } from "@/components/Separator";
-import ImageReveal from "@/components/ImageReveal";
 
 const monaSans = Mona_Sans({
   weight: "variable",

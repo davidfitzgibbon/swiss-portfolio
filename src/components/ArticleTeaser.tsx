@@ -26,9 +26,9 @@ export function ImageReveal({}: Props) {
         const sizeMag = .1
 
         // THINGS THAT CHANGE
-        let words:Array<Word> = [];
+        const words:Array<Word> = [];
         let dampingFactor = dampingQuick;
-        let origin = {
+        const origin = {
           x: width * .5,
           y: height * .5
         }
@@ -61,7 +61,7 @@ export function ImageReveal({}: Props) {
 
             const size = Math.min(width,height) * sizeMag;
 
-            let path = new PIXI.Graphics();
+            const path = new PIXI.Graphics();
 
             path.rect(-size*5, -size*1.25, size*10, size*2.5);
             path.fill("white");
@@ -101,11 +101,11 @@ export function ImageReveal({}: Props) {
       
         // SETUP
         for(let i = 0; i < count; i++) {
-          let target: Word = i == 0 ? origin : words[i-1];
+          const target: Word = i == 0 ? origin : words[i-1];
           words.push(new Word(target))
         }
 
-        app.ticker.add((time) => {
+        app.ticker.add(() => {
           if(active) {
             dampingFactor = dampingSlow;
             origin.x = mouseX;
@@ -127,17 +127,17 @@ export function ImageReveal({}: Props) {
           projectContainer.addEventListener("mouseover", () => (active = true));
           projectContainer.addEventListener("mouseleave", () => (active = false));
           projectContainer.addEventListener("mousemove", (e) => {
-            let cx = e.clientX;
-            let cy = e.clientY;
-            let pos = projectContainer.getBoundingClientRect();
+            const cx = e.clientX;
+            const cy = e.clientY;
+            const pos = projectContainer.getBoundingClientRect();
           
-            let screenx = cx - pos.x;
-            let screeny = cy - pos.y;
+            const screenx = cx - pos.x;
+            const screeny = cy - pos.y;
             
-            let widthEl = pos.width;
+            const widthEl = pos.width;
             mouseX = (screenx / widthEl) * width;
             
-            let heightEl = pos.height;
+            const heightEl = pos.height;
             mouseY = (screeny / heightEl) * height;
 
             // console.log(mouseX,mouseY)

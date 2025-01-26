@@ -2,9 +2,7 @@ import { createClient } from '@/prismicio'
 import { PrismicNextLink } from '@prismicio/next';
 import React from 'react'
 
-type Props = {}
-
-export async function Header({}: Props) {
+export async function Header() {
 
   const client = createClient();
   const settings = await client.getSingle("settings");
