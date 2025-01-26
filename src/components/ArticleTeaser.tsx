@@ -4,11 +4,7 @@ import * as PIXI from "pixi.js"
 import { useEffect, useRef } from "react";
 
 // MAIN EL
-type Props = {
-  imgURL: string;
-  dominantColor: string;
-}
-export function ArticleTeaser({}: Props) {
+export function ArticleTeaser() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,7 +22,7 @@ export function ArticleTeaser({}: Props) {
         const sizeMag = .1
 
         // THINGS THAT CHANGE
-        const words:Array<Word> = [];
+        const words: Word[] = [];
         let dampingFactor = dampingQuick;
         const origin = {
           x: width * .5,
