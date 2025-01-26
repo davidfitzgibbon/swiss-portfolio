@@ -1,0 +1,39 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"description": {
+				"__TYPE__": "FieldContent",
+				"value": "wrong",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "practical",
+				"type": "Text"
+			},
+			"startname": {
+				"__TYPE__": "FieldContent",
+				"value": "no",
+				"type": "Text"
+			},
+			"endname": {
+				"__TYPE__": "FieldContent",
+				"value": "firm",
+				"type": "Text"
+			},
+			"horzcount": {
+				"__TYPE__": "FieldContent",
+				"value": "49",
+				"type": "Number"
+			},
+			"vertcount": {
+				"__TYPE__": "FieldContent",
+				"value": "49",
+				"type": "Number"
+			}
+		},
+		"items": []
+	}
+]

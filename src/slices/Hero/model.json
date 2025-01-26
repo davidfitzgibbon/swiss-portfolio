@@ -1,0 +1,61 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "startname": {
+          "type": "Text",
+          "config": {
+            "label": "startName",
+            "placeholder": "Andy"
+          }
+        },
+        "endname": {
+          "type": "Text",
+          "config": {
+            "label": "endName",
+            "placeholder": "Bryant"
+          }
+        },
+        "horzcount": {
+          "type": "Number",
+          "config": {
+            "label": "horzCount",
+            "placeholder": "900"
+          }
+        },
+        "vertcount": {
+          "type": "Number",
+          "config": {
+            "label": "vertCount",
+            "placeholder": "600"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Chief Wonder Maker"
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": "Introduce yourself!"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
