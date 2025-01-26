@@ -35,7 +35,7 @@ export function ImageReveal({}: Props) {
         let mouseX = 0;
         let mouseY = 0;
         let active = false;
-        let frame = 0;
+        // let frame = 0; // handy for debugging
 
         // INITIALISE APP
         const app = new PIXI.Application();
@@ -118,7 +118,7 @@ export function ImageReveal({}: Props) {
           words.forEach(word=>{
             word.update()
           })
-          frame++
+          // frame++
         });
 
         // EVENTS

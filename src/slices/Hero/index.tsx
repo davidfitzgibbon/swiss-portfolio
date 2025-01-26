@@ -1,5 +1,5 @@
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 
 import { Bounded } from "@/components/Bounded";
 import { Triangles } from "@/components/Triangles";

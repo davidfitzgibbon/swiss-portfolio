@@ -1,6 +1,4 @@
-type Props = {}
-
-export function Separator({}: Props) {
+export function Separator() {
   return (
     
       <div className="separator fill-red w-[calc(100%_-_2rem)] my-8 ml-[1rem] flex justify-between">

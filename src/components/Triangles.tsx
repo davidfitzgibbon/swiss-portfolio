@@ -44,7 +44,7 @@ export function Triangles({
         
         // THINGS THAT CHANGE
         let active = false;
-        let frame = 0;
+        // let frame = 0;
 
         // INITIALISE APP
         const app = new PIXI.Application();
@@ -78,7 +78,7 @@ export function Triangles({
             app.stage.addChild(this.path);
           }
           createGraphic() {
-            let path = new PIXI.Graphics();
+            const path = new PIXI.Graphics();
             path.moveTo(0, 0);
             path.lineTo(0, -diagReach);
             path.lineTo(diagReach, 0);
@@ -133,11 +133,11 @@ export function Triangles({
           }
         }
 
-        app.ticker.add((time) => {
+        app.ticker.add(() => {
           triangles.forEach(triangle=>{
             triangle.update()
           })
-          frame++
+          // frame++
         });
 
         // EVENTS

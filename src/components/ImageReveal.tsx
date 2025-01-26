@@ -40,7 +40,7 @@ export function ImageReveal({
       
         // SET UP FRAME
         let frame = 0;
-        app.ticker.add((time) =>  frame++);
+        app.ticker.add(() =>  frame++);
       
         // CREATE TEXTURE
         const texture = await PIXI.Assets.load(imgURL);
@@ -77,9 +77,9 @@ export function ImageReveal({
             return Math.pow(Math.random(), 3);
           }
           createGraphic() {
-            let path = new PIXI.Graphics();
-            let small = unit * 0.5;
-            let big = unit * 1.5;
+            const path = new PIXI.Graphics();
+            const small = unit * 0.5;
+            const big = unit * 1.5;
             path.moveTo(-small, -big);
             path.lineTo(small, -big);
             path.lineTo(small, -small);
@@ -121,7 +121,7 @@ export function ImageReveal({
             grid(x, y);
           }
         }
-        app.ticker.add((time) => {
+        app.ticker.add(() => {
           plusses.forEach((plus) => plus.update());
           if(frame % framesPerChange == 0) {
             const randomPlus = plusses[Math.floor(Math.random() * plusses.length)];

@@ -1,4 +1,3 @@
-import { Bounded } from "@/components/Bounded";
 import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { Project } from "./Project";

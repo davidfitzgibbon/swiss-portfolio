@@ -1,7 +1,6 @@
 import ImageReveal from '@/components/ImageReveal';
 import { createClient } from '@/prismicio';
 import { Content, isFilled } from '@prismicio/client';
-import { PrismicNextImage } from '@prismicio/next';
 
 async function getDominantColor(url:string) {
   const paletteUrl = new URL(url);
