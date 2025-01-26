@@ -8,7 +8,7 @@ type Props = {
   imgURL: string;
   dominantColor: string;
 }
-export function ImageReveal({}: Props) {
+export function ArticleTeaser({}: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -92,10 +92,12 @@ export function ImageReveal({}: Props) {
             app.stage.addChild(this.path);
           }
           update() {
-            this.x += (this.target.x - this.x) * dampingFactor;
-            this.path.position.x = this.x;
-            this.y += (this.target.y - this.y) * dampingFactor;
-            this.path.position.y = this.y;
+            if(active) {
+              this.x += (this.target.x - this.x) * dampingFactor;
+              this.path.position.x = this.x;
+              this.y += (this.target.y - this.y) * dampingFactor;
+              this.path.position.y = this.y;
+            }
           }
         }
       
@@ -149,4 +151,4 @@ export function ImageReveal({}: Props) {
 
   return <div ref={containerRef}  />;
 }
-export default ImageReveal;
+export default ArticleTeaser;
