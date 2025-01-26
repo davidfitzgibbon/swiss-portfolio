@@ -145,7 +145,7 @@ export function Triangles({
         app.canvas.addEventListener("mouseleave", () => (active = false));
       })();
     }
-  }, []);
+  }, [horzCount,vertCount]);
 
   return <div ref={containerRef}  />;
 }

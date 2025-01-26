@@ -10,7 +10,7 @@ export type SeparatorProps = SliceComponentProps<Content.SeparatorSlice>;
 /**
  * Component for "Separator" Slices.
  */
-const SeparatorSlice = ({ slice }: SeparatorProps): JSX.Element => {
+const SeparatorSlice = (): JSX.Element => {
   return (
     <Separator />
   );

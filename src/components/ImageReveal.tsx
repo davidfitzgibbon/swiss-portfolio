@@ -137,7 +137,7 @@ export function ImageReveal({
         }
       })();
     }
-  }, []);
+  }, [imgURL,dominantColor]);
 
   return <div ref={containerRef}  />;
 }
