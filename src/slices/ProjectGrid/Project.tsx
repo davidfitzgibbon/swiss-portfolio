@@ -22,15 +22,16 @@ export async function Project({id}: Props) {
   const client = createClient();
   const project = await client.getByID<Content.ProjectDocument>(id)
 
-  const imgURL = project.data.screenshot.url;
-  const dominantColor = isFilled.image(project.data.screenshot) ? await getDominantColor(imgURL) : undefined;
+  const imageExists = isFilled.image(project.data.screenshot);
+  const imgURL = String(project.data.screenshot.url);
+  const dominantColor = imageExists ? await getDominantColor(imgURL) : "red";
 
   return (
     <a href="#projects" className=' project grid first:row-span-2 grid-cols-[1fr_min-content] grid-rows-[min-content_1fr] border-solid border-black border-2'>
       <h3 className='p-4 leading-5 border-b-2'>{project.data.title}</h3>
       <p className='p-4 leading-5 border-l-2 border-b-2 border-black'>{project.data.year}</p>
       <div className="p-4 self-center grid place-items-center col-span-2">
-        <ImageReveal imgURL={imgURL} dominantColor={dominantColor} />
+        {imageExists && <ImageReveal imgURL={imgURL} dominantColor={dominantColor} />}
         {/* <p>size</p> */}
       </div>
     </a>

@@ -1,150 +1,136 @@
 'use client'
 
-import * as PIXI from "pixi.js"
-import { useEffect, useRef } from "react";
+import "@pixi/events";
+import { Application, extend, useTick } from '@pixi/react'
+import { Container, FederatedMouseEvent, Graphics, Point, Text, } from 'pixi.js'
+import { useEffect, useRef, useState } from 'react'
 
-// MAIN EL
+extend({ Container, Graphics, Text })
+
+type WordProps = {
+  pos: Point;
+  size: number;
+};
+export function Word({
+  pos= new Point(0,0),
+  size = 30,
+}: WordProps) {
+
+  return (
+    <pixiContainer position={pos}>
+      <pixiGraphics draw={graphics => {
+        graphics.clear()
+        graphics.rect(-size*5, -size*1.25, size*10, size*2.5);
+        graphics.stroke({ width: 2, color: "black" });
+        graphics.fill("white");
+      }} />
+      <pixiText text={`READ ARTICLE`} style={{
+        fontSize: size,
+        fill: "red",
+        align: 'center',
+      }} 
+      anchor={{ x: 0.5, y: 0.5 }}/>
+
+    </pixiContainer>
+  )
+}
+
 export function ArticleTeaser() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const width = 1200;
+  const height = width * .5;
+  const size = Math.min(width,height) * .1;
+  const count = 300;
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      
-      (async () => {
-        
-        // CONSTS
-        const count = 300;
-        const width = window.innerWidth;
-        const height = width / 2;
-        const dampingSlow = .5;
-        const dampingQuick = .8;
-        const sizeMag = .1
+  const target = new Point(width*.5,height*.5);
+  type ListProps = {
+    target: Point;
+    pos: Point;
+  };
+  const initialList: Array<ListProps> = [];
+  for(let i = 0; i < count; i++) {
+    initialList.push({
+      target: i == 0? target : initialList[i-1].pos,
+      pos: new Point(width*.5,height*.5),
+    })
+  }
+  
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(false);
+  const [mouseX, setMouseX] = useState(width * .5)
+  const [mouseY, setMouseY] = useState(height * .5)
+  const [wordList, setWordList] = useState([...initialList])
 
-        // THINGS THAT CHANGE
-        const words: Word[] = [];
-        let dampingFactor = dampingQuick;
-        const origin = {
-          x: width * .5,
-          y: height * .5
-        }
-        let mouseX = 0;
-        let mouseY = 0;
-        let active = false;
-        // let frame = 0; // handy for debugging
 
-        // INITIALISE APP
-        const app = new PIXI.Application();
-        await app.init({
-          background: "red",
-          width: width,
-          height: height
-        });
-        container.appendChild(app.canvas);
 
-        // CLASSES
-        class Word {
-          target: Word;
-          x: number;
-          y: number;
-          path: PIXI.Graphics;
-          
-          constructor(target: Word) {
-            this.target = target;
+  useEffect(()=>{
+    const interval = setInterval(() => {
+      const dampingSpeed = .8;
+
+      if(active){
+        setWordList((prevWordList)=>
+          prevWordList.map((word,i) => {
+            const newPos = new Point(word.pos.x,word.pos.y)
+            const newTarget = new Point(0,0)
+            if(i == 0) {
+              newTarget.x = mouseX;
+              newTarget.y = mouseY;
             
-            this.x = target.x;
-            this.y = target.y;
-
-            const size = Math.min(width,height) * sizeMag;
-
-            const path = new PIXI.Graphics();
-
-            path.rect(-size*5, -size*1.25, size*10, size*2.5);
-            path.fill("white");
-            path.stroke({ width: 2, color: "black" });
-            
-            path.rect(-size*5, -size*1.25, size*10, size*2.5);
-            path.fill("white");
-
-            const text = new PIXI.Text({
-              text: 'READ ARTICLE',
-              style: {
-                fontSize: size,
-                fill: "red",
-                align: 'center',
-              }
-            });
-
-            text.x = -size*3.5;
-            text.y = -size*.5;
-            path.addChild(text)
-
-      
-            path.fill("red");
-            
-            path.position.x = this.x;
-            path.position.y = this.y;
-            this.path = path;
-            app.stage.addChild(this.path);
-          }
-          update() {
-            if(active) {
-              this.x += (this.target.x - this.x) * dampingFactor;
-              this.path.position.x = this.x;
-              this.y += (this.target.y - this.y) * dampingFactor;
-              this.path.position.y = this.y;
+            } else {
+              newTarget.x = wordList[i-1].pos.x;
+              newTarget.y = wordList[i-1].pos.y;
             }
-          }
-        }
-      
-        // SETUP
-        for(let i = 0; i < count; i++) {
-          const target: Word = i == 0 ? origin : words[i-1];
-          words.push(new Word(target))
-        }
-
-        app.ticker.add(() => {
-          if(active) {
-            dampingFactor = dampingSlow;
-            origin.x = mouseX;
-            origin.y = mouseY; 
-          } else {
-            dampingFactor = dampingQuick;
-            origin.x = width * .5;
-            origin.y = height * .5; 
-          }
-          words.forEach(word=>{
-            word.update()
+            newPos.x += ((newTarget.x-newPos.x) * dampingSpeed);
+            newPos.y += ((newTarget.y-newPos.y) * dampingSpeed);
+            
+            return {
+              ...word,
+              pos: newPos
+            }
           })
-          // frame++
-        });
+        )
+      }
+        
+    }, 1); // ~60 FPS
+        
+    return () => clearInterval(interval);
+  },[active, mouseX, mouseY, wordList])
 
-        // EVENTS
-        const projectContainer = app.canvas.closest(".article");
-        if(projectContainer!== null) {
-          projectContainer.addEventListener("mouseover", () => (active = true));
-          projectContainer.addEventListener("mouseleave", () => (active = false));
-          projectContainer.addEventListener("mousemove", (e) => {
-            const cx = e.clientX;
-            const cy = e.clientY;
-            const pos = projectContainer.getBoundingClientRect();
-          
-            const screenx = cx - pos.x;
-            const screeny = cy - pos.y;
-            
-            const widthEl = pos.width;
-            mouseX = (screenx / widthEl) * width;
-            
-            const heightEl = pos.height;
-            mouseY = (screeny / heightEl) * height;
+  
+  function over (e: FederatedMouseEvent) {
+    setActive(true);
+    setMouseX(e.global.x);
+    setMouseY(e.global.y);
+  }
+  function out () {
+    setActive(false);
+  }
 
-            // console.log(mouseX,mouseY)
-          });
-        }
-      })();
-    }
-  }, []);
-
-  return <div ref={containerRef}  />;
+  return (
+    <Application
+      width={width}
+      height={height}
+      background={'red'}
+    >
+      {wordList.map((word: ListProps, i: number)=> {
+        return (
+          <Word
+            key={`i${i}`}
+            pos={word.pos}
+            size={size}
+          />
+        );
+      })}
+      {/* OUR HIT TARGET */}
+      <pixiGraphics draw={graphics => {
+        graphics.clear()
+        graphics.rect(0, 0, width, height);
+        graphics.fill("rgba(0,0,0,0)");
+      }}
+      // onMouseOver={over}
+      onMouseMove={over}
+      onMouseLeave={out}
+      interactive={true} />
+    </Application>
+  )
 }
 export default ArticleTeaser;

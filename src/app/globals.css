@@ -6,3 +6,30 @@ canvas {
   width: 100%;
   max-width: 100%;
 }
+.layout {
+  --gap: clamp(1rem, 6vw, 3rem);
+  --outset: minmax(var(--gap), 1fr);
+  --inset: min(50ch, 100% - var(--gap) * 2);
+  --content: minmax(0, 5rem);
+
+  display: grid;
+  grid-template-columns:
+    [outset-start] var(--outset)
+    [content-start] var(--content)
+    [inset-start] var(--inset) [inset-end]
+    var(--content) [content-end]
+    var(--outset) [outset-end];
+  
+  }
+.layout > * {
+  grid-column: content;
+}
+.layout > .inset {
+  grid-column: inset;
+}
+.layout > .content {
+  grid-column: content;
+}
+.layout > .outset {
+  grid-column: outset;
+}

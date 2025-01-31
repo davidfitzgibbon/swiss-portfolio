@@ -1,3 +1,18 @@
+Important pages
+
+PIXI
+https://pixijs.download/release/docs/index.html
+https://github.com/pixijs/pixi-react/issues/493
+https://github.com/pixijs/pixi-react/tree/beta
+
+TAILWIND
+https://tailwindcss.com/docs/installation/using-vite
+
+GRID
+https://ryanmulligan.dev/blog/layout-breakouts/
+https://www.youtube.com/watch?v=c13gpBrnGEw
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
