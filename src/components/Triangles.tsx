@@ -3,7 +3,7 @@
 import "@pixi/events";
 import { Application, extend, useTick } from '@pixi/react'
 import { Container, Graphics, } from 'pixi.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -49,7 +49,6 @@ type Triangle = {
   size:number;
   startAngle:number;
   delay: number;
-  hasStarted: boolean;
 };
 const Triangle = ({
   x=0,
@@ -57,7 +56,6 @@ const Triangle = ({
   size = 100,
   startAngle=1,
   delay=1,
-  hasStarted= true
 }: Triangle) => {
 
   const [targetAngle, setTargetAngle] = useState(startAngle);
@@ -80,7 +78,6 @@ const Triangle = ({
   }, [angle, size])
 
   useGSAP(()=>{
-    if(hasStarted){  
       const dur = .5;
       // OBJ
       let gsapObj = {
@@ -101,7 +98,7 @@ const Triangle = ({
         onComplete: () =>{ setTargetAngle(getRandomAngle()); },
       })
     }
-  },[hasStarted])
+  )
 
   useTick(()=>{
     setAngle(angle - ((angle-targetAngle) * .1))
@@ -126,26 +123,16 @@ const Triangle = ({
 type Triangles = {
   horzCount?: number;
   vertCount?: number;
-  autoStart: boolean;
-  hasStarted: boolean;
+  start: boolean;
 };
 export function Triangles({
   horzCount= 5,
   vertCount = 5,
-  autoStart = true,
-  hasStarted = true
+  start = true
 }: Triangles) {
   const size: number = 100;
   const width = horzCount*size;
   const height = vertCount*size;
-
-  const app = useRef(null)
-
-  useEffect(()=>{
-    if(hasStarted && app.current){
-      app.current.getApplication().start();
-    }
-  }, [hasStarted])
 
   const triangles = [];
   for(let xi = 0; xi < horzCount; xi++) {
@@ -173,10 +160,8 @@ export function Triangles({
       height={height}
       background={'white'}
       className="trianges inset"
-      autoStart={autoStart}
-      ref={app}
     >
-        {triangles.map((triangle)=> (
+        {start && triangles.map((triangle)=> (
           <Triangle
             key={triangle.key}
             x={triangle.x}
@@ -184,7 +169,6 @@ export function Triangles({
             startAngle={triangle.startAngle}
             size={triangle.size}
             delay={triangle.delay}
-            hasStarted={hasStarted}
           />
         ))}
     </Application>

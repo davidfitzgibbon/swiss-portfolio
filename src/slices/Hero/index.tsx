@@ -21,9 +21,8 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  const container = useRef<HTMLDivElement>(null)
 
-  const [trianglesHaveStarted, setTrianglesHaveStarted] = useState(false);
+  const [trianglesStart, setTrianglesStart] = useState(false);
 
   function lg(left:number, right:number, color: string) {
     return `linear-gradient(
@@ -92,7 +91,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         duration: dur
       });
       tl.to(null, {
-        onComplete: () => {setTrianglesHaveStarted(true)}
+        onComplete: () => {setTrianglesStart(true)}
       })
       return tl
     }
@@ -137,7 +136,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       main
         .add(startName())
         .add(endName(), `=-${dur * 1.75}`)
-        .add(triangles())
+        .add(triangles(), `=-${dur * 2}`)
         .add(h2(), `=+${dur * 1.0}`)
         .add(p(), `=-${dur * 1.5}`)
   })
@@ -148,12 +147,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <h1 className="startName text-red text-6xl font-bold opacity-0 w-[min-content]">
           {slice.primary.startname}
         </h1>
-        <h1 className="endName text-black text-9xl font-boldNarrow opacity-0 w-[min-content]">
+        <h1 className="endName text-black text-9xl font-extraBoldNarrow opacity-0 w-[min-content]">
           {slice.primary.endname}
         </h1>
       </div>
       
-      <Triangles horzCount={10} vertCount={4} autoStart={false} hasStarted={trianglesHaveStarted} />
+      <Triangles horzCount={10} vertCount={4} start={trianglesStart} />
       <h2 className="title opacity-0 uppercase leading-none font-regular text-4xl text-center my-4">{slice.primary.title}</h2>
       <p className="description opacity-0 text-red">{slice.primary.description}</p>
     </div>
