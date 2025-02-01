@@ -11,7 +11,7 @@ export function Separator() {
   const container = useRef<HTMLDivElement>(null)
 
   useGSAP(()=>{
-    var separators: Array<SVGElement> = gsap.utils.toArray(".separator svg");
+    const separators: Array<SVGElement> = gsap.utils.toArray(".separator svg");
 
     separators.forEach((separator, i) => {
       gsap.to(separator, {

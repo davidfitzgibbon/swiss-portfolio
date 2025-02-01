@@ -17,7 +17,7 @@ function chooseRandomTime () {
 
 type PlusProps = {
   pos: PointData;
-  col: string | boolean;
+  col: string;
   unit: number;
 }
 const Plus = ({
@@ -34,7 +34,7 @@ const Plus = ({
   const [alphaTarget, setAlphaTarget] = useState(alpha);
   const [updateTime, setUpdateTime] = useState(chooseRandomTime());
 
-  const drawCallback = useCallback((graphics: { clear: () => void; moveTo: (arg0: number, arg1: number) => void; lineTo: (arg0: number, arg1: number) => void; fill: (arg0: any) => void }) => {
+  const drawCallback = useCallback((graphics: Graphics) => {
     const small = unit * 0.5;
     const big = unit * 1.5;
     graphics.clear()
@@ -84,11 +84,11 @@ const Plus = ({
 
 type Props = {
   imgURL: string;
-  dominantColor: string | boolean;
+  dominantColor: string;
 }
 export function ImageReveal({
   imgURL,
-  dominantColor
+  dominantColor="red"
 }:Props ){
   const {
     assets: [ texture ],

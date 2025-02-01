@@ -1,9 +1,9 @@
 'use client'
 
 import "@pixi/events";
-import { Application, extend, useTick } from '@pixi/react'
+import { Application, extend } from '@pixi/react'
 import { Container, FederatedMouseEvent, Graphics, Point, Text, } from 'pixi.js'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 extend({ Container, Graphics, Text })
 
@@ -54,13 +54,10 @@ export function ArticleTeaser() {
     })
   }
   
-  const canvasRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
   const [mouseX, setMouseX] = useState(width * .5)
   const [mouseY, setMouseY] = useState(height * .5)
   const [wordList, setWordList] = useState([...initialList])
-
-
 
   useEffect(()=>{
     const interval = setInterval(() => {

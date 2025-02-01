@@ -5,7 +5,7 @@ import { SliceComponentProps } from "@prismicio/react";
 
 
 import { Triangles } from "@/components/Triangles";
-import { JSX, useRef, useState } from "react";
+import { JSX, useState } from "react";
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -132,7 +132,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       return tl
     }
 
-    var main = gsap.timeline();
+    const main = gsap.timeline();
       main
         .add(startName())
         .add(endName(), `=-${dur * 1.75}`)

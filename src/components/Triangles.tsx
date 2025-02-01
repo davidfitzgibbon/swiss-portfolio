@@ -3,7 +3,7 @@
 import "@pixi/events";
 import { Application, extend, useTick } from '@pixi/react'
 import { Container, Graphics, } from 'pixi.js'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -37,8 +37,8 @@ function getStartAngle(
   return angle;
 }
 function getDistanceToCenter(x:number,y:number,width:number,height:number) {
-  var a = (width*.5) - x;
-  var b = (height*.5) - y;
+  const a = (width*.5) - x;
+  const b = (height*.5) - y;
   
   return Math.sqrt(a * a + b * b) / width;
 }
@@ -80,7 +80,7 @@ const Triangle = ({
   useGSAP(()=>{
       const dur = .5;
       // OBJ
-      let gsapObj = {
+      const gsapObj = {
         alpha: 0
       };
       // TIMELINE
