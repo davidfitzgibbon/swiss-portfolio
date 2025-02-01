@@ -3,14 +3,66 @@
 import "@pixi/events";
 import { Application, extend, useTick } from '@pixi/react'
 import { Container, Graphics, } from 'pixi.js'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+gsap.registerPlugin(useGSAP)
 
 extend({ Container, Graphics })
 
-const Triangle = ({x=0,y=0, size = 100}: {x:number,y:number,size:number}) => {
+function getRandomAngle() {
+  return Math.floor(Math.random() * 4) * (Math.PI * .5);
+}
+function getStartAngle(
+  x:number,
+  y:number,
+  width:number,
+  height:number
+) {
+  const horz = x > width*.5;
+  const vert = y > height*.5;
 
-  const [targetAngle, setTargetAngle] = useState(getAngle());
+  let angle = 0;
+  if(horz && vert) {
+    angle = Math.PI*.5
+  }
+  if(!horz && vert) {
+    angle = Math.PI*1
+  }
+  if(!horz && !vert) {
+    angle = Math.PI*1.5
+  }
+    
+  return angle;
+}
+function getDistanceToCenter(x:number,y:number,width:number,height:number) {
+  var a = (width*.5) - x;
+  var b = (height*.5) - y;
+  
+  return Math.sqrt(a * a + b * b) / width;
+}
+// TRIANGLE
+type Triangle = {
+  x:number;
+  y:number;
+  size:number;
+  startAngle:number;
+  delay: number;
+  hasStarted: boolean;
+};
+const Triangle = ({
+  x=0,
+  y=0,
+  size = 100,
+  startAngle=1,
+  delay=1,
+  hasStarted= true
+}: Triangle) => {
+
+  const [targetAngle, setTargetAngle] = useState(startAngle);
   const [angle, setAngle] = useState(targetAngle);
+  const [alpha, setAlpha] = useState(0);
 
   const pos = { x,y }
 
@@ -27,52 +79,113 @@ const Triangle = ({x=0,y=0, size = 100}: {x:number,y:number,size:number}) => {
     graphics.fill("red");
   }, [angle, size])
 
+  useGSAP(()=>{
+    if(hasStarted){  
+      const dur = .5;
+      // OBJ
+      let gsapObj = {
+        alpha: 0
+      };
+      // TIMELINE
+      const tl = gsap.timeline({
+        duration: dur,
+      });
+      // ANIMATIONS
+      tl.to(gsapObj, {
+        delay: delay,
+        alpha: 1,
+        onUpdate: () =>{ setAlpha(gsapObj.alpha); },
+      })
+      tl.to(gsapObj, {
+        delay: 2,
+        onComplete: () =>{ setTargetAngle(getRandomAngle()); },
+      })
+    }
+  },[hasStarted])
+
   useTick(()=>{
     setAngle(angle - ((angle-targetAngle) * .1))
   })
 
-  function getAngle() {
-    return Math.floor(Math.random() * 4) * (Math.PI * .5);
-  }
-
   function changeAngle () {
-    setTargetAngle((getAngle() - Math.PI)*2)
+    setTargetAngle((getRandomAngle() - Math.PI)*2)
   }
-
+  
   return (
     <pixiGraphics
       draw={drawCallback}
       position={pos}
       rotation={angle}
+      alpha={alpha}
       onMouseOver={changeAngle}
       interactive={true}
     />
   )
 }
 
-type Props = {
+type Triangles = {
   horzCount?: number;
   vertCount?: number;
+  autoStart: boolean;
+  hasStarted: boolean;
 };
 export function Triangles({
   horzCount= 5,
-  vertCount = 5
-}: Props) {
+  vertCount = 5,
+  autoStart = true,
+  hasStarted = true
+}: Triangles) {
   const size: number = 100;
   const width = horzCount*size;
   const height = vertCount*size;
 
+  const app = useRef(null)
+
+  useEffect(()=>{
+    if(hasStarted && app.current){
+      app.current.getApplication().start();
+    }
+  }, [hasStarted])
+
+  const triangles = [];
+  for(let xi = 0; xi < horzCount; xi++) {
+    for(let yi = 0; yi < vertCount; yi++) {
+      const x = (xi*size)+size*.5;
+      const y = (yi*size)+size*.5;
+      const startAngle = getStartAngle(x,y,width,height);
+      
+      const delay = getDistanceToCenter(x,y,width,height);
+      
+      triangles.push({
+        key:`x${x}y${y}`,
+        x,
+        y,
+        startAngle,
+        size,
+        delay
+      })
+    }
+  }
+
   return (
-    <Application width={width} height={height} background={'white'} className="trianges inset">
-        {[...Array(horzCount)].map((_,x)=> (
-          [...Array(vertCount)].map((_,y)=> (
-            <Triangle
-              key={`x${x}y${y}`}
-              x={(x*size)+size*.5}
-              y={(y*size)+size*.5}
-              size={size}
-            />
-          ))
+    <Application
+      width={width}
+      height={height}
+      background={'white'}
+      className="trianges inset"
+      autoStart={autoStart}
+      ref={app}
+    >
+        {triangles.map((triangle)=> (
+          <Triangle
+            key={triangle.key}
+            x={triangle.x}
+            y={triangle.y}
+            startAngle={triangle.startAngle}
+            size={triangle.size}
+            delay={triangle.delay}
+            hasStarted={hasStarted}
+          />
         ))}
     </Application>
   )

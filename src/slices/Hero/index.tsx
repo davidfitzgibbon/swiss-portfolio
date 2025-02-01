@@ -3,14 +3,13 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
+
+import { Triangles } from "@/components/Triangles";
+import { JSX, useRef, useState } from "react";
+
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from 'gsap/all';
-
-import { Bounded } from "@/components/Bounded";
-import { Triangles } from "@/components/Triangles";
-import { JSX, useRef } from "react";
-
 gsap.registerPlugin(useGSAP,ScrollTrigger)
 
 /**
@@ -23,6 +22,8 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   const container = useRef<HTMLDivElement>(null)
+
+  const [trianglesHaveStarted, setTrianglesHaveStarted] = useState(false);
 
   function lg(left:number, right:number, color: string) {
     return `linear-gradient(
@@ -90,6 +91,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const tl = gsap.timeline({
         duration: dur
       });
+      tl.to(null, {
+        onComplete: () => {setTrianglesHaveStarted(true)}
+      })
       return tl
     }
     function h2() {
@@ -132,9 +136,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     var main = gsap.timeline();
       main
         .add(startName())
-        .add(endName(), `=-${dur * 1.5}`)
-        // .add(triangles())
-        .add(h2(), `=-${dur * 1.5}`)
+        .add(endName(), `=-${dur * 1.75}`)
+        .add(triangles())
+        .add(h2(), `=+${dur * 1.0}`)
         .add(p(), `=-${dur * 1.5}`)
   })
   
@@ -149,7 +153,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         </h1>
       </div>
       
-      <Triangles horzCount={9} vertCount={3} />
+      <Triangles horzCount={10} vertCount={4} autoStart={false} hasStarted={trianglesHaveStarted} />
       <h2 className="title opacity-0 uppercase leading-none font-regular text-4xl text-center my-4">{slice.primary.title}</h2>
       <p className="description opacity-0 text-red">{slice.primary.description}</p>
     </div>
