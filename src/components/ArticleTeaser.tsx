@@ -4,36 +4,10 @@ import "@pixi/events";
 import { Application, extend } from '@pixi/react'
 import { Container, FederatedMouseEvent, Graphics, Point, Text, } from 'pixi.js'
 import { useEffect, useState } from 'react'
+import ArticleTeaserCTA from "./ArticleTeaserCTA";
 
 extend({ Container, Graphics, Text })
 
-type WordProps = {
-  pos: Point;
-  size: number;
-};
-export function Word({
-  pos= new Point(0,0),
-  size = 30,
-}: WordProps) {
-
-  return (
-    <pixiContainer position={pos}>
-      <pixiGraphics draw={graphics => {
-        graphics.clear()
-        graphics.rect(-size*5, -size*1.25, size*10, size*2.5);
-        graphics.stroke({ width: 2, color: "black" });
-        graphics.fill("white");
-      }} />
-      <pixiText text={`READ ARTICLE`} style={{
-        fontSize: size,
-        fill: "red",
-        align: 'center',
-      }} 
-      anchor={{ x: 0.5, y: 0.5 }}/>
-
-    </pixiContainer>
-  )
-}
 
 export function ArticleTeaser() {
   const width = 1200;
@@ -110,7 +84,7 @@ export function ArticleTeaser() {
     >
       {wordList.map((word: ListProps, i: number)=> {
         return (
-          <Word
+          <ArticleTeaserCTA
             key={`i${i}`}
             pos={word.pos}
             size={size}
