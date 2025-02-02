@@ -1,4 +1,4 @@
-import ArticleTeaser from '@/components/ArticleTeaser';
+import ArticleTeaser from '@/components/ArticleTeaser/ArticleTeaser';
 import { createClient } from '@/prismicio';
 import { Content } from '@prismicio/client';
 import React from 'react'

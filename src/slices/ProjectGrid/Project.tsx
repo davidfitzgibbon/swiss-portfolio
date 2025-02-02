@@ -1,4 +1,4 @@
-import ImageReveal from '@/components/ImageReveal';
+import ProjectTeaser from '@/components/ProjectTeaser/ProjectTeaser';
 import { createClient } from '@/prismicio';
 import { Content, isFilled } from '@prismicio/client';
 
@@ -31,7 +31,7 @@ export async function Project({id}: Props) {
       <h3 className='p-4 leading-5 border-b-2'>{project.data.title}</h3>
       <p className='p-4 leading-5 border-l-2 border-b-2 border-black'>{project.data.year}</p>
       <div className="p-4 self-center grid place-items-center col-span-2">
-        {imageExists && <ImageReveal imgURL={imgURL} dominantColor={dominantColor} />}
+        {imageExists && <ProjectTeaser imgURL={imgURL} dominantColor={dominantColor} />}
         {/* <p>size</p> */}
       </div>
     </a>
