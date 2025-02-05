@@ -19,8 +19,6 @@ export async function Project({id}: Props) {
       <p className='p-4 leading-5 border-l-2 border-b-2 border-black'>{project.data.year}</p>
       <div className="p-4 self-center grid place-items-center col-span-2">
         {imageExists && <ProjectTeaser imgURL={imgURL} />}
-        {/* <p>{imgURL}</p> */}
-        {/* <img src={imgURL} /> */}
       </div>
     </a>
   )

@@ -1,6 +1,6 @@
 import { extend, useTick } from "@pixi/react"
-import { Container, Graphics, Sprite, Texture } from "pixi.js"
-import React, { useRef, useState } from "react"
+import { Assets, Container, Graphics, Sprite } from "pixi.js"
+import React, { useEffect, useRef, useState } from "react"
 
 extend({ Container, Graphics, Sprite })
 
@@ -9,7 +9,7 @@ function getOffset(num: number) {
 }
 
 type Props = {
-  texture: Texture;
+  imgURL: string;
   active: boolean;
   width: number;
   sliceHeight: number;
@@ -17,17 +17,27 @@ type Props = {
 }
 
 export default function Slice({
-  texture,
+  imgURL,
   width = 100,
   sliceHeight = 100,
   y = 0,
   active = false
 }: Props) {
+  const [texture, setTexture] = useState(null)
+
   const [offset, setOffset] = useState(getOffset(width));
   const [offsetCurrent, setOffsetCurrent] = useState(0);
   const maskRef = useRef(null);
   const [frame, setFrame] = useState(0);
   const [frameLimit] = useState(Math.floor(Math.random()*60) + 60);
+
+  useEffect(() => {
+    if (!texture) {
+      Assets
+        .load(imgURL)
+        .then(asset => setTexture(asset))
+    }
+  }, [texture,imgURL])
 
   useTick(()=>{
     const damping = .1;

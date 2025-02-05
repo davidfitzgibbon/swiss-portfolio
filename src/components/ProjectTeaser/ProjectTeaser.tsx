@@ -1,7 +1,7 @@
 'use client'
 
 import "@pixi/events";
-import { Application, extend, useAssets } from '@pixi/react'
+import { Application, extend } from '@pixi/react'
 import { Container, Graphics, Sprite, } from 'pixi.js'
 import Slice from "./Slice";
 import { useState } from "react";
@@ -14,14 +14,8 @@ type Props = {
 export function ProjectTeaser({
   imgURL
 }:Props ){
-  const {
-    assets: [ texture ],
-    isSuccess,
-  } = useAssets([ imgURL ])
-  console.log(texture)
-
-  const width = texture?.width || 1920;
-  const height = texture?.height || 1080;
+  const width = 1920;
+  const height = 1080;
   const sliceCount = 20;
   const sliceHeight = height / sliceCount
   
@@ -45,8 +39,8 @@ export function ProjectTeaser({
     width={width}
     height={height}
     >
-        {isSuccess && slices.map(slice=>(
-          <Slice key={slice} y={slice} texture={texture} width={width} sliceHeight={sliceHeight} active={active} />
+        {slices.map(slice=>(
+          <Slice key={slice} y={slice} imgURL={imgURL} width={width} sliceHeight={sliceHeight} active={active} />
         ))
          }
         {/* OUR HIT TARGET */}
