@@ -20,6 +20,7 @@ export async function Project({id}: Props) {
       <div className="p-4 self-center grid place-items-center col-span-2">
         {imageExists && <ProjectTeaser imgURL={imgURL} />}
         <p>{imgURL}</p>
+        <img src={imgURL} />
       </div>
     </a>
   )
