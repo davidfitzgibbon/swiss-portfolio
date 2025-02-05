@@ -10,7 +10,6 @@ extend({ Container, Graphics, Sprite })
 
 type Props = {
   imgURL: string;
-  dominantColor: string;
 }
 export function ProjectTeaser({
   imgURL
