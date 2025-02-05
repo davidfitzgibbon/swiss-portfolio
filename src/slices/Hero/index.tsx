@@ -90,7 +90,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       const tl = gsap.timeline({
         duration: dur
       });
-      tl.to(null, {
+      tl.to(".endName", { // just using endName to waste some time
         onComplete: () => {setTrianglesStart(true)}
       })
       return tl
