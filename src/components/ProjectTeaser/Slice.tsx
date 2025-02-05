@@ -46,7 +46,7 @@ export default function Slice({
 
   return (
     <>
-      {isSuccess && <pixiContainer mask={maskRef?.current} >
+      {texture && <pixiContainer mask={maskRef?.current} >
         <pixiGraphics
           label="mask"
           draw={(graphics) => {
