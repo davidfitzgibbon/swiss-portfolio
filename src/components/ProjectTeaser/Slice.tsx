@@ -10,6 +10,7 @@ function getOffset(num: number) {
 
 type Props = {
   texture: Texture;
+  isSuccess: boolean;
   active: boolean;
   width: number;
   sliceHeight: number;
@@ -18,6 +19,7 @@ type Props = {
 
 export default function Slice({
   texture,
+  isSuccess= false,
   width = 100,
   sliceHeight = 100,
   y = 0,
@@ -43,19 +45,21 @@ export default function Slice({
   })
 
   return (
-    <pixiContainer mask={maskRef?.current} >
-      <pixiGraphics
-        label="mask"
-        draw={(graphics) => {
-          graphics.clear()
-          graphics.rect(0, y, width, sliceHeight);
-          graphics.fill(0x000000);
-        }}
-        ref={maskRef}
-      />
-      <pixiSprite texture={texture} position={{
-        x:offsetCurrent,y:0
-      }} />
-    </pixiContainer>
+    <>
+      {isSuccess && <pixiContainer mask={maskRef?.current} >
+        <pixiGraphics
+          label="mask"
+          draw={(graphics) => {
+            graphics.clear()
+            graphics.rect(0, y, width, sliceHeight);
+            graphics.fill(0x000000);
+          }}
+          ref={maskRef}
+        />
+        <pixiSprite texture={texture} position={{
+          x:offsetCurrent,y:0
+        }} />
+      </pixiContainer> }
+    </>
   )
 }

@@ -45,7 +45,7 @@ export function ProjectTeaser({
     height={height}
     >
         {isSuccess && slices.map(slice=>(
-          <Slice key={slice} y={slice} texture={texture} width={width} sliceHeight={sliceHeight} active={active} />
+          <Slice key={slice} y={slice} texture={texture} width={width} sliceHeight={sliceHeight} active={active} isSuccess={isSuccess} />
         ))
          }
         {/* OUR HIT TARGET */}
