@@ -10,7 +10,6 @@ function getOffset(num: number) {
 
 type Props = {
   texture: Texture;
-  isSuccess: boolean;
   active: boolean;
   width: number;
   sliceHeight: number;
@@ -19,7 +18,6 @@ type Props = {
 
 export default function Slice({
   texture,
-  isSuccess= false,
   width = 100,
   sliceHeight = 100,
   y = 0,
