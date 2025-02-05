@@ -18,6 +18,7 @@ export function ProjectTeaser({
     assets: [ texture ],
     isSuccess,
   } = useAssets([ imgURL ])
+  console.log(texture)
 
   const width = texture?.width || 1920;
   const height = texture?.height || 1080;
