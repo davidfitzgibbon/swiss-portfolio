@@ -4,10 +4,7 @@ import "@pixi/events";
 import { Application, extend } from '@pixi/react'
 import { Container, Graphics, } from 'pixi.js'
 
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
 import Triangle from "./Triangle";
-gsap.registerPlugin(useGSAP)
 
 extend({ Container, Graphics })
 

@@ -1,0 +1,60 @@
+{
+  "id": "experience",
+  "type": "SharedSlice",
+  "name": "Experience",
+  "description": "Experience",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "experiences": {
+          "type": "Group",
+          "config": {
+            "label": "Experiences",
+            "repeat": true,
+            "fields": {
+              "institution": {
+                "type": "Text",
+                "config": {
+                  "label": "Institution",
+                  "placeholder": ""
+                }
+              },
+              "task": {
+                "type": "Text",
+                "config": {
+                  "label": "Task",
+                  "placeholder": ""
+                }
+              },
+              "year": {
+                "type": "Number",
+                "config": {
+                  "label": "Year",
+                  "placeholder": ""
+                }
+              },
+              "type": {
+                "type": "Select",
+                "config": {
+                  "label": "Type",
+                  "placeholder": "",
+                  "options": [
+                    "Professional",
+                    "Education"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

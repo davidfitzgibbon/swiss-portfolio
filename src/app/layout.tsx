@@ -3,7 +3,6 @@ import { Mona_Sans } from 'next/font/google';
 import { Header } from "@/components/Header";
 import "./globals.css";
 import { Separator } from "@/components/Separator";
-// import Agh from "@/components/Agh";
 
 const monaSans = Mona_Sans({
   weight: "variable",
@@ -27,12 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${monaSans.variable} antialiased font-sans bg-white text-black `}
+        className={`${monaSans.variable} antialiased font-regular bg-white text-black `}
       >
-        {/* <Agh /> */}
         <Header />
         <Separator />
         {children}
+        <Separator />
       </body>
     </html>
   );
