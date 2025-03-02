@@ -66,7 +66,7 @@ interface AboutDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type AboutDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<AboutDocumentData>, "about", Lang>;
+  prismic.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
 
 type BlogPostDocumentDataSlicesSlice = TextBlockSlice;
 
@@ -97,15 +97,15 @@ interface BlogPostDocumentData {
   date: prismic.DateField;
 
   /**
-   * HoverImage field in *Blog Post*
+   * Image field in *Blog Post*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_post.hoverimage
+   * - **API ID Path**: blog_post.image
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  hoverimage: prismic.ImageField<never>;
+  image: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *Blog Post*
@@ -240,13 +240,13 @@ interface PageDocumentData {
   /**
    * Title field in *Page*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: page.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.TitleField;
+  title: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Page*
@@ -332,15 +332,15 @@ interface ProjectPostDocumentData {
   date: prismic.DateField;
 
   /**
-   * Hover Image field in *Project Post*
+   * Image field in *Project Post*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_post.hover_image
+   * - **API ID Path**: project_post.image
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  hover_image: prismic.ImageField<never>;
+  image: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *Project Post*
@@ -417,6 +417,31 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
+ * Item in *Settings → FooterLinks*
+ */
+export interface SettingsDocumentDataFooterlinksItem {
+  /**
+   * Link field in *Settings → FooterLinks*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footerlinks[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * icon field in *Settings → FooterLinks*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footerlinks[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -463,6 +488,19 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+
+  /**
+   * FooterLinks field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.footerlinks[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footerlinks: prismic.GroupField<
+    Simplify<SettingsDocumentDataFooterlinksItem>
+  >;
 }
 
 /**
@@ -587,16 +625,6 @@ export interface ContentIndexSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   view_more_text: prismic.KeyTextField;
-
-  /**
-   * Fallback item image field in *ContentIndex → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_index.default.primary.fallback_item_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  fallback_item_image: prismic.ImageField<never>;
 }
 
 /**
@@ -977,6 +1005,7 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      SettingsDocumentDataFooterlinksItem,
       AllDocumentTypes,
       BiographySlice,
       BiographySliceDefaultPrimary,

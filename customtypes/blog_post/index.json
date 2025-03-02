@@ -26,10 +26,10 @@
           "placeholder": ""
         }
       },
-      "hoverimage": {
+      "image": {
         "type": "Image",
         "config": {
-          "label": "HoverImage",
+          "label": "Image",
           "constraint": {},
           "thumbnails": []
         }

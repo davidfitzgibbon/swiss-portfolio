@@ -1,4 +1,5 @@
 import { createClient } from '@/prismicio'
+import { PrismicNextLink } from '@prismicio/next';
 import Link from 'next/link';
 import React from 'react'
 
@@ -15,7 +16,7 @@ export async function Header() {
         </li>
         {settings.data.navigation.map((item)=>(
           <li key={item.link.text} className='flex after:content-["•"] after:px-1 last:after:content-[]'>
-            <Link className='uppercase font-light' href={`/${item.link.slug}`} >{item.link.text}</Link>
+            <PrismicNextLink field={item.link} className='uppercase'/>
           </li>
         ))}
       </ul>

@@ -1,8 +1,8 @@
-import ExperienceItem from "@/components/ExperienceItem";
 import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
+import ExperienceItem from "./ExperienceItem";
 
 /**
  * Props for `Experience`.

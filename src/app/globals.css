@@ -33,3 +33,7 @@ canvas {
 .layout > .outset {
   grid-column: outset;
 }
+
+p {
+  margin: 1em 0 ;
+}

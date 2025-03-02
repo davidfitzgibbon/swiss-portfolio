@@ -4,12 +4,13 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
 
-import { Triangles } from "@/components/Triangles";
+
 import { JSX, useState } from "react";
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from 'gsap/all';
+import Triangles from "./Triangles";
 gsap.registerPlugin(useGSAP,ScrollTrigger)
 
 /**

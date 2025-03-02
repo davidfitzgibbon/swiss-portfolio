@@ -6,22 +6,26 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Heading from "@/components/Heading";
+import { PrismicNextImage } from "@prismicio/next";
 
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
-  const page = await client
-    .getByUID("project_post", uid)
-    .catch(() => notFound());
+  const page = await client.getByUID("project_post", uid).catch(() => notFound());
+
+  const imageExists = isFilled.image(page.data.image);
 
   return (
-  <div className="layout">
-        <Heading>{page.data.title}</Heading>
-        <SliceZone slices={page.data.slices} components={components} />
-      </div>
-      );
+    <div className="layout">
+      <Heading>{page.data.title}</Heading>
+      {imageExists && (
+        <PrismicNextImage field={page.data.image} />
+      )}
+      <SliceZone slices={page.data.slices} components={components} />
+    </div>
+  );
 }
 
 export async function generateMetadata({

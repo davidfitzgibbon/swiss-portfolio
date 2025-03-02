@@ -45,14 +45,6 @@
             "label": "View More Text",
             "placeholder": ""
           }
-        },
-        "fallback_item_image": {
-          "type": "Image",
-          "config": {
-            "label": "Fallback item image",
-            "constraint": {},
-            "thumbnails": []
-          }
         }
       },
       "items": {}

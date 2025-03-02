@@ -21,9 +21,11 @@ const Biography = ({ slice }: BiographyProps): JSX.Element => {
         className="mb-6"
       >
         <Heading as="h2">Biography</Heading>
-        <div className="grid grid-cols-[1fr_1fr] gap-4">
+        <div className="grid sm:grid-cols-[1fr_1fr] grid-cols-[1fr] gap-4">
           <PrismicNextImage field={slice.primary.portrait} />
-          <PrismicRichText field={slice.primary.description} />
+          <div>
+            <PrismicRichText field={slice.primary.description} />
+          </div>
         </div>
           
       </section>

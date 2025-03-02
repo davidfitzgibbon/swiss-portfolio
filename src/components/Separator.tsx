@@ -21,7 +21,7 @@ export function Separator() {
           // markers: true,
           start: "30px bottom",
         },
-        rotation: 90 * ((i*2-1)),
+        rotation: 90 * Math.floor(Math.random() * 4),
         duration: 0.2,
         opacity: 1
       });
