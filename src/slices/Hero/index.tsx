@@ -144,7 +144,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   
   return (
     <div className="layout">
-      <div className="leading-none uppercase text-center justify-items-center">
+      <div className="leading-none uppercase text-center justify-items-center grid">
         <h1 className="startName text-red text-6xl font-bold opacity-0 w-[min-content]">
           {slice.primary.startname}
         </h1>

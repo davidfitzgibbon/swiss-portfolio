@@ -59,14 +59,14 @@ export default function TechItem({institution, year, task, type}: Props) {
   
   return (
     <li className='grid grid-cols-[100px,1fr] align-start mb-6 gap-2' ref={container} >
-      <svg viewBox="0 0 100 80" className=" ">
+      <svg viewBox="0 0 100 80" className="w-full block">
         <path className="triangle translate-y-[-320px]" fill="red" d="M0,0L100,0L50,80" />
         <text x="50%" y="20" fontSize="22" dominantBaseline="middle" textAnchor="middle" fill="white">{year}</text>
       </svg>
       <div className="text overflow-hidden">
-        <p className="type font-light translate-x-[-100px]">{type}</p>
-        <p className='task text-2xl font-black translate-x-[-100%]'>{task}</p>
-        <p className='institution text-2xl font-ultraLight translate-x-[-100%]'>{institution}</p>
+        <p className="type font-light translate-x-[-100px] m-0">{type}</p>
+        <p className='task text-2xl font-black translate-x-[-100%] m-0'>{task}</p>
+        <p className='institution text-2xl font-ultraLight translate-x-[-100%] m-0'>{institution}</p>
       </div>
     </li>
   )
