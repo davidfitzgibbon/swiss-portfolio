@@ -20,8 +20,13 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
       className="layout mb-8"
     >
       <Heading as="h2">Experience</Heading>
-      {slice.primary.experiences.map((item) => (
-        <ExperienceItem key={item.institution} institution={item.institution} task={item.task} year={item.year} type={item.type} />
+      {slice.primary.experiences.map((item,i) => (
+        <ExperienceItem 
+        key={i} 
+        institution={item.institution} 
+        task={item.task} 
+        year={item.year} 
+        type={item.type} />
       ))}
     </ul>
   );

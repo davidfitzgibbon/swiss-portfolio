@@ -4,8 +4,8 @@ import gsap from "gsap"
 gsap.registerPlugin(useGSAP)
 
 type Props = {
-  name: string;
-  effectiveness: string;
+  name: string | null;
+  effectiveness: string | null;
 }
 
 export default function TechItem({name, effectiveness}: Props) {

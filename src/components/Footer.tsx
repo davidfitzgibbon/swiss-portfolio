@@ -1,6 +1,5 @@
 import { createClient } from '@/prismicio'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
-import Link from 'next/link';
 import React from 'react'
 
 export async function Footer() {

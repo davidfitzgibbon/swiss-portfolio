@@ -7,10 +7,10 @@ import { useRef } from "react"
 gsap.registerPlugin(useGSAP,ScrollTrigger)
 
 type Props = {
-  institution: string;
-  year: string;
-  task: string;
-  type: string;
+  institution: string | null;
+  year: number | null;
+  task: string | null;
+  type: string | null;
 }
 
 export default function TechItem({institution, year, task, type}: Props) {

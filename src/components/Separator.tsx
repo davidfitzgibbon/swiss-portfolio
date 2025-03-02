@@ -13,7 +13,7 @@ export function Separator() {
   useGSAP(()=>{
     const separators: Array<SVGElement> = gsap.utils.toArray(".separator svg");
 
-    separators.forEach((separator, i) => {
+    separators.forEach((separator) => {
       gsap.to(separator, {
         scrollTrigger: {
           trigger: separator,
