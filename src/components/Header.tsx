@@ -3,10 +3,10 @@ import Link from 'next/link';
 import React from 'react'
 
 export async function Header() {
-
+  
   const client = createClient();
   const settings = await client.getSingle("settings");
-
+  
   return (
     <nav aria-label='main' className="homeMenu mt-4 text-red">
       <ul className='flex content-center justify-center list-none'>

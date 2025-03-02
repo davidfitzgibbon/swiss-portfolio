@@ -35,9 +35,8 @@ export function Separator() {
         ref={container}
         className="separator fill-red w-[calc(100%_-_2rem)] my-8 ml-[1rem] flex justify-between outset">
         {Array(2).fill("").map((_,i)=>(
-          <svg key={i} viewBox="-50 -50 100 100" className='w-8 opacity-0'>
-            <rect x="0" y="33" width="100" height="33" />
-            <rect x="33" y="0" width="33" height="100" />
+          <svg key={i} viewBox="-50 -50 100 100" className='w-4 opacity-0'>
+            <path d="M0,0 L-50,-50 L50,-50 L50,50" />
           </svg>
           )
         )}

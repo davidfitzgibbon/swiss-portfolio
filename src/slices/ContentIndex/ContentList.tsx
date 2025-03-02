@@ -5,22 +5,27 @@ import React from 'react'
 type Props = {
   items: Content.BlogPostDocument[] | Content.ProjectPostDocument[];
   contentType: Content.ContentIndexSlice["primary"]["content_type"];
-  fallbackItemImage: Content.ContentIndexSlice["primary"]["fallback_item_image"];
   viewMoreText: Content.ContentIndexSlice["primary"]["view_more_text"];
 }
 
-export default function ContentList({items, contentType, fallbackItemImage, viewMoreText="Read More"}: Props) {
+export default function ContentList({items, contentType, viewMoreText="Read More"}: Props) {
   const urlPrefix = contentType === "Project" ? "projects" : "blog";
   return (
     <>
       <ul className='mt-8'>
         {items.map((item, index)=>(
           <li key={index} className='mt-4'>
-            <Link href={`${urlPrefix}/${item.uid}`}>
-              <div>
-                <span>{item.data.title}</span>
+            <Link href={`${urlPrefix}/${item.uid}`} className='flex justify-between items-center transition-border border-transparent duration-200 border-t border-b hover:border-red py-4 group overflow-hidden'>
+              <svg viewBox="0 0 70 100" className='transition-transform duration-200 w-8 h-[1em] w-[min-content] block translate-x-[-100%]  group-hover:translate-x-[0%]'>
+                <path className='fill-red' d="M0,0 L70,50 L0,100" />
+              </svg>
+              <div className="flex justify-between flex-1 px-3 w-[max-content]">
+                <h2 className='font-black text-l'>{item.data.title}</h2>
+                <span>{viewMoreText}</span>
               </div>
-              <span>{viewMoreText}</span>
+              <svg viewBox="0 0 70 100" className='transition-transform duration-200 w-8 h-[1em] w-[min-content] block translate-x-[100%]  group-hover:translate-x-[0%]'>
+                <path className='fill-red' d="M70,0 L0,50 L70,100" />
+              </svg>
             </Link>
           </li>
         ))}

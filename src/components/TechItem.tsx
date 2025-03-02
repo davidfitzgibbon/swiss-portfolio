@@ -9,19 +9,17 @@ type Props = {
 }
 
 export default function TechItem({name, effectiveness}: Props) {
-
-  const container = useRef<HTMLLIElement>(null)
-
+  
   const triangles = [];
   for(let i = 1; i <=5; i++) {
     triangles.push(
       i < Number(effectiveness) ? true:false
     );
   }
+  const container = useRef<HTMLLIElement>(null)
 
   useGSAP(()=>{
-
-    let tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
         // markers: true,

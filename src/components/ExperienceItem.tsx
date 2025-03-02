@@ -23,7 +23,7 @@ export default function TechItem({institution, year, task, type}: Props) {
     const task = q('.task');
     const institution = q('.institution');
     
-    let tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
         // markers: true,
