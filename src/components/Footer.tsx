@@ -10,7 +10,7 @@ export async function Footer() {
   return (
     <div className="layout">
       <div className="inset">
-        <nav aria-label='footer' className="homeMenu mt-4 text-red border-t border-black">
+        <nav aria-label='footer' className="homeMenu mt-4 mb-4 text-red border-t border-black">
           <ul className='flex content-center justify-center items-center mt-2 list-none'>
             {settings.data.footerlinks.map((item)=>(
               <li key={item.link.text} className='flex after:content-["•"] after:px-1 last:after:content-[]'>
