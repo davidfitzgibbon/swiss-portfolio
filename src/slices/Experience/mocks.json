@@ -40,6 +40,20 @@
 									"value": "hunt",
 									"type": "Text"
 								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Dolore proident quis sit labore enim pariatur officia tempor ullamco elit. Excepteur adipisicing in laborum laborum sint ex duis."
+											}
+										}
+									]
+								}
 							]
 						]
 					}

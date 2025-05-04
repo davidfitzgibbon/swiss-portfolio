@@ -20,7 +20,7 @@ const Biography = ({ slice }: BiographyProps): JSX.Element => {
         data-slice-variation={slice.variation}
         className="mb-6"
       >
-        <Heading as="h2">Biography</Heading>
+        <Heading as="h1">Biography</Heading>
         <div className="grid sm:grid-cols-[1fr_1fr] grid-cols-[1fr] gap-4">
           <PrismicNextImage field={slice.primary.portrait} />
           <div>

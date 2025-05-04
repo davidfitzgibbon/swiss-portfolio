@@ -19,14 +19,15 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="layout mb-8"
     >
-      <Heading as="h2">Experience</Heading>
+      <Heading as="h1">Experience</Heading>
       {slice.primary.experiences.map((item,i) => (
         <ExperienceItem 
         key={i} 
         institution={item.institution} 
         task={item.task} 
         year={item.year} 
-        type={item.type} />
+        type={item.type} 
+        description={item.description} />
       ))}
     </ul>
   );

@@ -8,7 +8,7 @@ export async function Footer() {
   const settings = await client.getSingle("settings");
   
   return (
-    <div className="layout">
+    <footer className="layout">
       <div className="inset">
         <nav aria-label='footer' className="homeMenu mt-4 mb-4 text-red border-t border-black">
           <ul className='flex content-center justify-center items-center mt-2 list-none'>
@@ -22,6 +22,6 @@ export async function Footer() {
           </ul>
         </nav>
       </div>
-    </div>
+    </footer>
   )
 }

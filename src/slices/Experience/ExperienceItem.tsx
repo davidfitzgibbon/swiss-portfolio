@@ -1,5 +1,7 @@
 "use client"
 import { useGSAP } from "@gsap/react"
+import { RichTextField } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
 import gsap from "gsap"
 import { ScrollTrigger } from 'gsap/all';
 import { useRef } from "react"
@@ -11,9 +13,10 @@ type Props = {
   year: number | null;
   task: string | null;
   type: string | null;
+  description: RichTextField;
 }
 
-export default function TechItem({institution, year, task, type}: Props) {
+export default function TechItem({institution, year, task, type, description}: Props) {
   const container = useRef<HTMLLIElement>(null)
 
   useGSAP(()=>{
@@ -58,7 +61,8 @@ export default function TechItem({institution, year, task, type}: Props) {
   },{scope:container})
   
   return (
-    <li className='grid grid-cols-[100px,1fr] align-start mb-6 gap-2' ref={container} >
+    <li className="mb-8" ref={container} >
+      <div className='grid grid-cols-[100px,1fr] align-start mb-6 gap-2'>
       <svg viewBox="0 0 100 80" className="w-full block">
         <path className="triangle translate-y-[-320px]" fill="red" d="M0,0L100,0L50,80" />
         <text x="50%" y="20" fontSize="22" dominantBaseline="middle" textAnchor="middle" fill="white">{year}</text>
@@ -67,6 +71,10 @@ export default function TechItem({institution, year, task, type}: Props) {
         <p className="type font-light translate-x-[-100px] m-0">{type}</p>
         <p className='task text-2xl font-black translate-x-[-100%] m-0'>{task}</p>
         <p className='institution text-2xl font-ultraLight translate-x-[-100%] m-0'>{institution}</p>
+      </div>
+      </div>
+      <div className="richText">
+        <PrismicRichText field={description} />
       </div>
     </li>
   )

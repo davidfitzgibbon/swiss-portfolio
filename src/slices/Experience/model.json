@@ -49,6 +49,15 @@
                     "Education"
                   ]
                 }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "description",
+                  "placeholder": "describe your role at the company",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,list-item"
+                }
               }
             }
           }

@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+p {
+  margin: 1em 0 ;
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+strong {
+  font-variation-settings: "wght" 600, "wdth" 100;
+}
+.richText li {
+  list-style: disc;
+}
+
 canvas {
   width: 100%;
   max-width: 100%;
@@ -34,6 +47,3 @@ canvas {
   grid-column: outset;
 }
 
-p {
-  margin: 1em 0 ;
-}

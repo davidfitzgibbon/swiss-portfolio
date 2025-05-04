@@ -1,9 +1,7 @@
 "use client"
 
-import { Content } from "@prismicio/client";
+import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-
-
 
 import { JSX, useState } from "react";
 
@@ -140,16 +138,28 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         .add(triangles(), `=-${dur * 2}`)
         .add(h2(), `=+${dur * 1.0}`)
         .add(p(), `=-${dur * 1.5}`)
-  })
+
+      })
+    const renderLetters = (name: KeyTextField, key: string) => {
+      if (!name) return;
+      return name.split("").map((letter, index) => (
+        <span
+          key={index}
+          className={`inline-block transition-all duration-500 delay-[3000ms] hover:transition-200 hover:rotate-180 hover:delay-0`}
+        >
+          {letter}
+        </span>
+      ));
+    };
   
   return (
     <div className="layout">
       <div className="leading-none uppercase text-center justify-items-center grid">
-        <h1 className="startName text-red text-6xl font-bold opacity-0 w-[min-content]">
-          {slice.primary.startname}
+        <h1 className="startName flex text-red text-6xl font-bold opacity-0 w-[min-content]">
+          {renderLetters(slice.primary.startname, "start")}
         </h1>
-        <h1 className="endName text-black text-9xl mb-6 font-extraBoldNarrow opacity-0 w-[min-content]">
-          {slice.primary.endname}
+        <h1 className="endName flex text-black text-9xl mb-6 font-extraBoldNarrow opacity-0 w-[min-content]">
+          {renderLetters(slice.primary.endname, "end")}
         </h1>
       </div>
       

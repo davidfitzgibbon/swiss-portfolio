@@ -700,6 +700,16 @@ export interface ExperienceSliceDefaultPrimaryExperiencesItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   type: prismic.SelectField<"Professional" | "Education">;
+
+  /**
+   * description field in *Experience → Default → Primary → Experiences*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: describe your role at the company
+   * - **API ID Path**: experience.default.primary.experiences[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 /**
