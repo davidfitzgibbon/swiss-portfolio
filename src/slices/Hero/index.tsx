@@ -140,7 +140,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         .add(p(), `=-${dur * 1.5}`)
 
       })
-    const renderLetters = (name: KeyTextField, key: string) => {
+    const renderLetters = (name: KeyTextField) => {
       if (!name) return;
       return name.split("").map((letter, index) => (
         <span
@@ -156,10 +156,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <div className="layout">
       <div className="leading-none uppercase text-center justify-items-center grid">
         <h1 className="startName flex text-red text-6xl font-bold opacity-0 w-[min-content]">
-          {renderLetters(slice.primary.startname, "start")}
+          {renderLetters(slice.primary.startname)}
         </h1>
         <h1 className="endName flex text-black text-9xl mb-6 font-extraBoldNarrow opacity-0 w-[min-content]">
-          {renderLetters(slice.primary.endname, "end")}
+          {renderLetters(slice.primary.endname)}
         </h1>
       </div>
       
