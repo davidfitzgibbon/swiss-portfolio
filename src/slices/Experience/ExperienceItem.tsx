@@ -1,14 +1,16 @@
 "use client";
+
 import { useGSAP } from "@gsap/react";
-import { RichTextField } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
+import { RichTextField } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
+import { components } from "@/richTextComponents";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-type Props = {
+type ExperienceItemProps = {
   institution: string | null;
   year: number | null;
   task: string | null;
@@ -16,13 +18,13 @@ type Props = {
   description: RichTextField;
 };
 
-export default function TechItem({
+export function ExperienceItem({
   institution,
   year,
   task,
   type,
   description,
-}: Props) {
+}: ExperienceItemProps) {
   const container = useRef<HTMLLIElement>(null);
 
   useGSAP(
@@ -52,9 +54,9 @@ export default function TechItem({
   );
 
   return (
-    <li className="mb-8" ref={container}>
-      <div className="grid grid-cols-[100px,1fr] align-start mb-6 gap-2">
-        <svg viewBox="0 0 100 80" className="w-full block">
+    <li ref={container}>
+      <div className="align-start mb-6 flex gap-2">
+        <svg viewBox="0 0 100 80" className="block w-[100px] shrink-0">
           <path
             className="triangle translate-y-[-320px]"
             fill="red"
@@ -71,18 +73,16 @@ export default function TechItem({
             {year}
           </text>
         </svg>
-        <div className="text overflow-hidden">
-          <p className="type font-light translate-x-[-100px] m-0">{type}</p>
-          <p className="task text-2xl font-black translate-x-[-100%] m-0">
-            {task}
-          </p>
-          <p className="institution text-2xl font-ultraLight translate-x-[-100%] m-0">
+        <div className="text grow overflow-hidden">
+          <p className="type translate-x-[-100px] font-light">{type}</p>
+          <p className="task translate-x-[-100%] font-black text-2xl">{task}</p>
+          <p className="institution translate-x-[-100%] font-ultraLight text-2xl">
             {institution}
           </p>
         </div>
       </div>
-      <div className="richText">
-        <PrismicRichText field={description} />
+      <div>
+        <PrismicRichText field={description} components={components} />
       </div>
     </li>
   );

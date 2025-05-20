@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRef } from "react";
+
 gsap.registerPlugin(useGSAP);
 
-type Props = {
+type TechItemProps = {
   name: string | null;
   effectiveness: string | null;
 };
 
-export default function TechItem({ name, effectiveness }: Props) {
+export default function TechItem({ name, effectiveness }: TechItemProps) {
   const triangles = [];
   for (let i = 1; i <= 5; i++) {
     triangles.push(i < Number(effectiveness) ? true : false);
@@ -35,19 +36,18 @@ export default function TechItem({ name, effectiveness }: Props) {
   );
 
   return (
-    <li
-      className="text-4xl text-black fill-red grid grid-cols-[min-content_min-content] gap-6 mb-8 justify-end"
-      ref={container}
-    >
+    <li className="col-span-2 grid grid-cols-subgrid" ref={container}>
       <div className="overflow-hidden">
-        <h3 className="font-black text-right translate-x-[150px]">{name}</h3>
+        <h3 className="translate-x-[150px] text-right font-black text-4xl">
+          {name}
+        </h3>
       </div>
-      <div className="flex gap-2 self-center overflow-hidden">
+      <div className="flex gap-2 self-center overflow-hidden fill-red">
         {triangles.map((triangle, i) => (
           <svg
             viewBox="0 0 284 284"
             key={i}
-            className="w-[.5em] -translate-x-[150px]"
+            className="size-4 -translate-x-[150px]"
           >
             {triangle && <path d="M283 142 0 283V0l283 142Z" />}
             <path d="M283 142 0 283V0l283 142Zm-20 0L9 15v254l254-127Z" />

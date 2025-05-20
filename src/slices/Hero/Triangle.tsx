@@ -1,12 +1,12 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import "@pixi/events";
 import { extend, useTick } from "@pixi/react";
+import gsap from "gsap";
 import { Container, Graphics } from "pixi.js";
 import { useCallback, useState } from "react";
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 gsap.registerPlugin(useGSAP);
 
 extend({ Container, Graphics });

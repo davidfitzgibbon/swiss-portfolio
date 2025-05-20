@@ -1,32 +1,30 @@
-import { createClient } from "@/prismicio";
+import { Fragment } from "react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import React from "react";
+import { createClient } from "@/prismicio";
 
 export async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
 
   return (
-    <footer className="layout">
-      <div className="inset">
-        <nav
-          aria-label="footer"
-          className="homeMenu mt-4 mb-4 text-red border-t border-black"
-        >
-          <ul className="flex content-center justify-center items-center mt-2 list-none">
-            {settings.data.footerlinks.map((item) => (
-              <li
-                key={item.link.text}
-                className='flex after:content-["•"] after:px-1 last:after:content-[]'
-              >
+    <footer className="mx-auto w-full max-w-2xl border-t border-black py-4 text-red">
+      <nav aria-label="footer">
+        <ul className="flex items-center justify-center gap-4">
+          {settings.data.footerlinks.map((item) => (
+            <Fragment key={item.link.text}>
+              <li>
                 <PrismicNextLink field={item.link}>
-                  <PrismicNextImage field={item.icon} className="w-[2em]" />
+                  <PrismicNextImage field={item.icon} className="size-8" />
                 </PrismicNextLink>
               </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+              <li
+                aria-hidden
+                className="size-1 rounded-full bg-current last:hidden"
+              />
+            </Fragment>
+          ))}
+        </ul>
+      </nav>
     </footer>
   );
 }

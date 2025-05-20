@@ -1,14 +1,13 @@
 "use client";
 
-import { Content, KeyTextField } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
-
-import { JSX, useState } from "react";
-
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useState } from "react";
+import { Content, KeyTextField } from "@prismicio/client";
+import { SliceComponentProps } from "@prismicio/react";
 import Triangles from "./Triangles";
+
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
@@ -19,7 +18,7 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 /**
  * Component for "Hero" Slices.
  */
-const Hero = ({ slice }: HeroProps): JSX.Element => {
+const Hero = ({ slice }: HeroProps) => {
   const [trianglesStart, setTrianglesStart] = useState(false);
 
   function lg(left: number, right: number, color: string) {
@@ -144,7 +143,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     return name.split("").map((letter, index) => (
       <span
         key={index}
-        className={`inline-block transition-all duration-500 delay-[3000ms] hover:transition-200 hover:rotate-180 hover:delay-0`}
+        className={`hover:transition-200 inline-block transition-all delay-[3000ms] duration-500 hover:rotate-180 hover:delay-0`}
       >
         {letter}
       </span>
@@ -153,17 +152,17 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
   return (
     <div className="layout">
-      <div className="leading-none uppercase text-center justify-items-center grid">
-        <h1 className="startName flex text-red text-6xl font-bold opacity-0 w-[min-content]">
+      <div className="grid justify-items-center text-center uppercase leading-none">
+        <h1 className="startName flex w-[min-content] font-bold text-6xl text-red opacity-0">
           {renderLetters(slice.primary.startname)}
         </h1>
-        <h1 className="endName flex text-black text-9xl mb-6 font-extraBoldNarrow opacity-0 w-[min-content]">
+        <h1 className="endName mb-6 flex w-[min-content] font-extraBoldNarrow text-9xl text-black opacity-0">
           {renderLetters(slice.primary.endname)}
         </h1>
       </div>
 
       <Triangles horzCount={10} vertCount={4} start={trianglesStart} />
-      <h2 className="mt-6 title opacity-0 uppercase leading-none font-regular text-4xl text-center my-4">
+      <h2 className="title my-4 mt-6 text-center font-regular text-4xl uppercase leading-none opacity-0">
         {slice.primary.title}
       </h2>
       <p className="description opacity-0">{slice.primary.description}</p>

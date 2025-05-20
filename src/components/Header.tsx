@@ -1,28 +1,25 @@
+import { Fragment } from "react";
 import { createClient } from "@/prismicio";
-import { PrismicNextLink } from "@prismicio/next";
-import Link from "next/link";
-import React from "react";
+import { HeaderNavLink } from "./HeaderNavLink";
 
 export async function Header() {
   const client = createClient();
   const settings = await client.getSingle("settings");
 
   return (
-    <header>
-      <nav aria-label="main" className="homeMenu mt-4 text-red">
-        <ul className="flex content-center justify-center list-none">
-          <li className='flex after:content-["•"] after:px-1 last:after:content-[]'>
-            <Link className="uppercase font-light" href={`/`}>
-              Home
-            </Link>
-          </li>
+    <header className="py-4 text-red">
+      <nav aria-label="main">
+        <ul className="flex items-center justify-center gap-4">
           {settings.data.navigation.map((item) => (
-            <li
-              key={item.link.text}
-              className='flex after:content-["•"] after:px-1 last:after:content-[]'
-            >
-              <PrismicNextLink field={item.link} className="uppercase" />
-            </li>
+            <Fragment key={item.link.text}>
+              <li>
+                <HeaderNavLink field={item.link} />
+              </li>
+              <li
+                aria-hidden
+                className="size-1 rounded-full bg-current last:hidden"
+              />
+            </Fragment>
           ))}
         </ul>
       </nav>

@@ -1,10 +1,8 @@
-import { Mona_Sans } from "next/font/google";
 import clsx from "clsx";
-
-import { Header } from "@/components/Header";
+import { Mona_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { Separator } from "@/components/Separator";
-
 import "./globals.css";
 
 const monaSans = Mona_Sans({
@@ -24,13 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          "antialiased font-regular bg-white text-black",
+          "bg-white p-6 font-regular text-black antialiased",
           monaSans.variable,
         )}
       >
         <Header />
         <Separator />
-        {children}
+        <main className="mx-auto w-full max-w-2xl">{children}</main>
         <Separator />
         <Footer />
       </body>

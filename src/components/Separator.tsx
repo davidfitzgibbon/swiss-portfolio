@@ -33,19 +33,20 @@ export function Separator() {
   );
 
   return (
-    <div className="layout">
-      <div
-        ref={container}
-        className="separator fill-red w-[calc(100%_-_2rem)] my-8 ml-[1rem] flex justify-between outset"
-      >
-        {Array(2)
-          .fill("")
-          .map((_, i) => (
-            <svg key={i} viewBox="-50 -50 100 100" className="w-4 opacity-0">
-              <path d="M0,0 L-50,-50 L50,-50 L50,50" />
-            </svg>
-          ))}
-      </div>
+    <div
+      ref={container}
+      className="separator mx-auto my-8 flex w-full max-w-2xl justify-between text-red"
+    >
+      <Triangle />
+      <Triangle />
     </div>
+  );
+}
+
+function Triangle() {
+  return (
+    <svg viewBox="-50 -50 100 100" className="w-4 opacity-0">
+      <path fill="currentColor" d="M0,0 L-50,-50 L50,-50 L50,50" />
+    </svg>
   );
 }

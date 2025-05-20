@@ -1,12 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { isFilled, asImageSrc } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
+import { asImageSrc, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-
+import { SliceZone } from "@prismicio/react";
+import Heading from "@/components/Heading";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import Heading from "@/components/Heading";
 
 type Params = { uid: string };
 

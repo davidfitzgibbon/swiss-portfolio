@@ -3,7 +3,6 @@
 import "@pixi/events";
 import { Application, extend } from "@pixi/react";
 import { Container, Graphics } from "pixi.js";
-
 import Triangle from "./Triangle";
 
 extend({ Container, Graphics });

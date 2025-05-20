@@ -7,8 +7,8 @@ type Props = {
 
 export default function Heading({ as: Comp = "h1", children }: Props) {
   return (
-    <div className="border-b pb-2 mb-6">
-      <Comp className="font-ultraLightWide text-5xl">{children}</Comp>
-    </div>
+    <Comp className="mb-6 border-b pb-2 font-ultraLightWide text-5xl">
+      {children}
+    </Comp>
   );
 }

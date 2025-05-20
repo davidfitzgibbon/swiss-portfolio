@@ -1,24 +1,14 @@
 import type { Config } from "tailwindcss";
-import fluid, { extract } from "fluid-tailwind";
 
 export default {
   content: {
-    files: [
-      "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
-      "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-      "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    ],
-    extract,
+    files: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   },
   theme: {
-    colors: {
-      transparent: "transparent",
-      red: "red",
-      white: "white",
-      black: "black",
-    },
     extend: {
+      colors: {
+        red: "red",
+      },
       fontFamily: {
         ultraLightNarrow: [
           "var(--font-mona-sans)",
@@ -119,5 +109,4 @@ export default {
       },
     },
   },
-  plugins: [fluid],
 } satisfies Config;

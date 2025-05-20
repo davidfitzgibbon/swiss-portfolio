@@ -3,19 +3,10 @@
 @tailwind utilities;
 @plugin "@tailwindcss/typography";
 
-p {
-  margin: 1em 0;
-  &:first-of-type {
-    margin-top: 0;
-  }
-}
 strong {
   font-variation-settings:
     "wght" 600,
     "wdth" 100;
-}
-.richText li {
-  list-style: disc;
 }
 
 canvas {
