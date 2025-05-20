@@ -27,7 +27,6 @@ const Biography = ({ slice }: BiographyProps): JSX.Element => {
             <PrismicRichText field={slice.primary.description} />
           </div>
         </div>
-          
       </section>
     </div>
   );

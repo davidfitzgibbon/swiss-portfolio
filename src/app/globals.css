@@ -4,13 +4,15 @@
 @plugin "@tailwindcss/typography";
 
 p {
-  margin: 1em 0 ;
+  margin: 1em 0;
   &:first-of-type {
     margin-top: 0;
   }
 }
 strong {
-  font-variation-settings: "wght" 600, "wdth" 100;
+  font-variation-settings:
+    "wght" 600,
+    "wdth" 100;
 }
 .richText li {
   list-style: disc;
@@ -33,8 +35,7 @@ canvas {
     [inset-start] var(--inset) [inset-end]
     var(--content) [content-end]
     var(--outset) [outset-end];
-  
-  }
+}
 .layout > * {
   grid-column: content;
 }
@@ -47,4 +48,3 @@ canvas {
 .layout > .outset {
   grid-column: outset;
 }
-

@@ -13,13 +13,14 @@ export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>;
 /**
  * Component for "ContentIndex" Slices.
  */
-const ContentIndex = async ({ slice }: ContentIndexProps): Promise<JSX.Element> => {
+const ContentIndex = async ({
+  slice,
+}: ContentIndexProps): Promise<JSX.Element> => {
   const client = createClient();
-  const blogposts = await client.getAllByType('blog_post');
-  const projects = await client.getAllByType('project_post');
+  const blogposts = await client.getAllByType("blog_post");
+  const projects = await client.getAllByType("project_post");
 
-
-  const items = slice.primary.content_type  == "Blog" ? blogposts : projects;
+  const items = slice.primary.content_type == "Blog" ? blogposts : projects;
 
   return (
     <div className="layout">

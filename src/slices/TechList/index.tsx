@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
@@ -15,8 +15,6 @@ export type TechListProps = SliceComponentProps<Content.TechListSlice>;
  * Component for "TechList" Slices.
  */
 const TechList = ({ slice }: TechListProps): JSX.Element => {
-
-
   return (
     <div className="layout mb-8">
       <Heading as="h2">Skills</Heading>
@@ -26,7 +24,7 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
         className="w-[min-content]"
       >
         {slice.primary.tech.map((item) => (
-          <TechItem 
+          <TechItem
             key={item.name}
             name={item.name}
             effectiveness={item.effectiveness}

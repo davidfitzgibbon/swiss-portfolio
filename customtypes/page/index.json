@@ -25,6 +25,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "tech_list": {
+              "type": "SharedSlice"
+            },
+            "experience": {
+              "type": "SharedSlice"
+            },
+            "biography": {
+              "type": "SharedSlice"
+            },
             "content_index": {
               "type": "SharedSlice"
             }

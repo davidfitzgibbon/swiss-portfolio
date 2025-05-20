@@ -1,43 +1,43 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"tech": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"effectiveness",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "3",
-									"type": "Select"
-								}
-							],
-							[
-								"name",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "faster",
-									"type": "Text"
-								}
-							],
-							[
-								"year",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "22",
-									"type": "Number"
-								}
-							]
-						]
-					}
-				]
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "tech": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "effectiveness",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "3",
+                  "type": "Select"
+                }
+              ],
+              [
+                "name",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "faster",
+                  "type": "Text"
+                }
+              ],
+              [
+                "year",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "22",
+                  "type": "Number"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
 ]
