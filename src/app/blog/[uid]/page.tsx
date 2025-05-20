@@ -15,11 +15,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const page = await client.getByUID("blog_post", uid).catch(() => notFound());
 
   return (
-    <div className="layout">
+    <>
       <Heading>{page.data.title}</Heading>
       <PrismicNextImage field={page.data.image} />
       <SliceZone slices={page.data.slices} components={components} />
-    </div>
+    </>
   );
 }
 

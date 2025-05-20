@@ -75,7 +75,7 @@ export function Triangles({
       width={width}
       height={height}
       background={"white"}
-      className="trianges inset"
+      className="trianges inset w-full"
     >
       {start &&
         triangles.map((triangle) => (
