@@ -152,17 +152,18 @@ const Hero = ({ slice }: HeroProps) => {
 
   return (
     <div className="layout">
-      <div className="grid justify-items-center text-center uppercase leading-none">
-        <h1 className="startName flex w-min font-bold text-6xl text-red opacity-0">
+      <div className="grid justify-items-center text-center leading-none uppercase">
+        <h1 className="startName text-red flex w-min text-6xl font-bold opacity-0 md:text-8xl">
           {renderLetters(slice.primary.startname)}
         </h1>
-        <h1 className="endName mb-6 flex w-min font-extra-bold-narrow text-9xl text-black opacity-0">
+        <h1 className="endName font-extra-bold-narrow mb-6 flex w-min text-9xl text-black opacity-0">
           {renderLetters(slice.primary.endname)}
         </h1>
       </div>
 
       <Triangles horzCount={10} vertCount={4} start={trianglesStart} />
-      <h2 className="title my-4 mt-6 text-center font-regular text-4xl uppercase leading-none opacity-0">
+
+      <h2 className="title font-regular my-4 text-center text-4xl leading-none uppercase opacity-0 md:my-8">
         {slice.primary.title}
       </h2>
       <p className="description opacity-0">{slice.primary.description}</p>

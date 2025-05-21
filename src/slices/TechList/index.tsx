@@ -18,7 +18,7 @@ const TechList = ({ slice }: TechListProps) => {
     <div
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="mb-8"
+      className="mb-8 md:mb-12"
     >
       <Heading as="h2">Skills</Heading>
 

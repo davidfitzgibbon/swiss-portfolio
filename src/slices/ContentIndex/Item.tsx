@@ -15,14 +15,14 @@ export function Item({
   return (
     <PrismicNextLink
       document={document}
-      className="transition-border group flex items-center justify-between overflow-hidden border-b border-t border-transparent py-4 duration-200 hover:border-red"
+      className="transition-border group hover:border-red flex items-center justify-between overflow-hidden border-y border-transparent py-4 duration-200 md:border-y-2"
     >
       <svg
         viewBox="0 0 70 100"
         className="block h-[1.5em] w-[1em] translate-x-[-50%] transition-transform duration-200 group-hover:-translate-x-[0%]"
       >
         <path
-          className="fill-black group-hover:fill-red"
+          className="group-hover:fill-red fill-black"
           d="M0,0 L70,50 L0,100"
         />
       </svg>
@@ -35,7 +35,7 @@ export function Item({
         className="block h-[1.5em] w-[1em] translate-x-[50%] transition-transform duration-200 group-hover:-translate-x-[0%]"
       >
         <path
-          className="fill-black group-hover:fill-red"
+          className="group-hover:fill-red fill-black"
           d="M70,0 L0,50 L70,100"
         />
       </svg>

@@ -17,10 +17,10 @@ const Biography = ({ slice }: BiographyProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="mb-8"
+      className="mb-8 md:mb-12"
     >
       <Heading as="h1">Biography</Heading>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
         <PrismicNextImage field={slice.primary.portrait} />
         <div>
           <PrismicRichText

@@ -7,14 +7,17 @@ export async function Footer() {
   const settings = await client.getSingle("settings");
 
   return (
-    <footer className="mx-auto w-full max-w-2xl border-t border-black py-4 text-red">
+    <footer className="text-red mx-auto w-full max-w-5xl py-4 md:py-6">
       <nav aria-label="footer">
         <ul className="flex items-center justify-center gap-4">
           {settings.data.footerlinks.map((item) => (
             <Fragment key={item.link.text}>
               <li>
                 <PrismicNextLink field={item.link}>
-                  <PrismicNextImage field={item.icon} className="size-8" />
+                  <PrismicNextImage
+                    field={item.icon}
+                    className="size-8 md:size-12"
+                  />
                 </PrismicNextLink>
               </li>
               <li

@@ -35,7 +35,7 @@ export function Separator() {
   return (
     <div
       ref={container}
-      className="separator mx-auto my-8 flex w-full max-w-2xl justify-between text-red"
+      className="separator text-red mx-auto my-8 flex w-full max-w-5xl justify-between"
     >
       <Triangle />
       <Triangle />
@@ -45,7 +45,7 @@ export function Separator() {
 
 function Triangle() {
   return (
-    <svg viewBox="-50 -50 100 100" className="w-4 opacity-0">
+    <svg viewBox="-50 -50 100 100" className="size-4 opacity-0 md:size-8">
       <path fill="currentColor" d="M0,0 L-50,-50 L50,-50 L50,50" />
     </svg>
   );

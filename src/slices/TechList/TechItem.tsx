@@ -38,16 +38,16 @@ export default function TechItem({ name, effectiveness }: TechItemProps) {
   return (
     <li className="col-span-2 grid grid-cols-subgrid" ref={container}>
       <div className="overflow-hidden">
-        <h3 className="translate-x-[150px] text-right font-black text-4xl">
+        <h3 className="translate-x-[150px] text-right text-4xl font-black md:text-5xl">
           {name}
         </h3>
       </div>
-      <div className="flex gap-2 self-center overflow-hidden fill-red">
+      <div className="fill-red flex gap-2 self-center overflow-hidden md:gap-3">
         {triangles.map((triangle, i) => (
           <svg
             viewBox="0 0 284 284"
             key={i}
-            className="size-4 -translate-x-[150px]"
+            className="size-4 -translate-x-[150px] md:size-6"
           >
             {triangle && <path d="M283 142 0 283V0l283 142Z" />}
             <path d="M283 142 0 283V0l283 142Zm-20 0L9 15v254l254-127Z" />

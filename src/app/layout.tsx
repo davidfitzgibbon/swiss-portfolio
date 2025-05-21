@@ -20,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={monaSans.variable}>
-      <body className="font-regular bg-white p-6 text-black antialiased">
+      <body className="font-regular bg-white p-6 text-black antialiased md:text-xl">
         <Header />
         <Separator />
-        <main className="mx-auto w-full max-w-2xl">{children}</main>
+        <main className="mx-auto w-full max-w-5xl">{children}</main>
         <Separator />
         <Footer />
       </body>

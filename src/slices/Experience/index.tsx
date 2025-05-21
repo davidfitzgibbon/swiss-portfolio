@@ -16,7 +16,7 @@ const Experience = ({ slice }: ExperienceProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="mb-8"
+      className="mb-8 md:mb-12"
     >
       <Heading as="h1">Experience</Heading>
       <ul className="flex flex-col gap-8">
