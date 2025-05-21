@@ -1,7 +1,6 @@
 import { Metadata } from "next";
-import { isFilled, asImageSrc } from "@prismicio/client";
+import { asImageSrc, isFilled } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
@@ -12,8 +11,6 @@ export default async function Page() {
   return <SliceZone slices={page.data.slices} components={components} />;
 }
 
-
-// METADATA
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const page = await client.getSingle("homepage");

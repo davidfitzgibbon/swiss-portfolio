@@ -13,8 +13,6 @@ https://ryanmulligan.dev/blog/layout-breakouts/
 https://www.youtube.com/watch?v=c13gpBrnGEw
 https://codepen.io/loficodes/pen/xbKBQow/5dc2d0326de439a63e9cae3e0af1797b
 
-
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

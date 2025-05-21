@@ -1,22 +1,22 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { JSX } from "react";
+import { components } from "@/richTextComponents";
 
 /**
  * Props for `TextBlock`.
  */
-export type TextBlockProps = SliceComponentProps<Content.TextBlockSlice>;
+export type TextProps = SliceComponentProps<Content.TextSlice>;
 
 /**
  * Component for "TextBlock" Slices.
  */
-const TextBlock = ({ slice }: TextBlockProps): JSX.Element => {
+const TextBlock = ({ slice }: TextProps) => {
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <PrismicRichText field={slice.primary.content} />
+      <PrismicRichText field={slice.primary.text} components={components} />
     </section>
   );
 };

@@ -44,10 +44,7 @@
                 "config": {
                   "label": "Type",
                   "placeholder": "",
-                  "options": [
-                    "Professional",
-                    "Education"
-                  ]
+                  "options": ["Professional", "Education"]
                 }
               },
               "description": {

@@ -1,35 +1,35 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"heading": {
-				"__TYPE__": "FieldContent",
-				"value": "do",
-				"type": "Text"
-			},
-			"content_type": {
-				"__TYPE__": "FieldContent",
-				"value": "Project",
-				"type": "Select"
-			},
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Sunt qui in exercitation anim."
-						}
-					}
-				]
-			},
-			"view_more_text": {
-				"__TYPE__": "FieldContent",
-				"value": "closer",
-				"type": "Text"
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "do",
+        "type": "Text"
+      },
+      "content_type": {
+        "__TYPE__": "FieldContent",
+        "value": "Project",
+        "type": "Select"
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Sunt qui in exercitation anim."
+            }
+          }
+        ]
+      },
+      "view_more_text": {
+        "__TYPE__": "FieldContent",
+        "value": "closer",
+        "type": "Text"
+      }
+    },
+    "items": []
+  }
 ]

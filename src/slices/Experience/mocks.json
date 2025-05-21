@@ -1,65 +1,65 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"experiences": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"institution",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "fierce",
-									"type": "Text"
-								}
-							],
-							[
-								"year",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "8",
-									"type": "Number"
-								}
-							],
-							[
-								"type",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "Professional",
-									"type": "Select"
-								}
-							],
-							[
-								"task",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "hunt",
-									"type": "Text"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Dolore proident quis sit labore enim pariatur officia tempor ullamco elit. Excepteur adipisicing in laborum laborum sint ex duis."
-											}
-										}
-									]
-								}
-							]
-						]
-					}
-				]
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "experiences": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "institution",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "fierce",
+                  "type": "Text"
+                }
+              ],
+              [
+                "year",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "8",
+                  "type": "Number"
+                }
+              ],
+              [
+                "type",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Professional",
+                  "type": "Select"
+                }
+              ],
+              [
+                "task",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "hunt",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "StructuredTextContent",
+                  "value": [
+                    {
+                      "type": "paragraph",
+                      "content": {
+                        "text": "Dolore proident quis sit labore enim pariatur officia tempor ullamco elit. Excepteur adipisicing in laborum laborum sint ex duis."
+                      }
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
 ]

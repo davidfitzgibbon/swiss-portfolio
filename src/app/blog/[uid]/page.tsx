@@ -1,12 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { isFilled, asImageSrc } from "@prismicio/client";
+import { asImageSrc, isFilled } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
-
+import Heading from "@/components/Heading";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import Heading from "@/components/Heading";
-import { PrismicNextImage } from "@prismicio/next";
 
 type Params = { uid: string };
 
@@ -15,16 +14,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const client = createClient();
   const page = await client.getByUID("blog_post", uid).catch(() => notFound());
 
-  const imageExists = isFilled.image(page.data.image);
-
   return (
-    <div className="layout">
+    <>
       <Heading>{page.data.title}</Heading>
-      {imageExists && (
-        <PrismicNextImage field={page.data.image} />
-      )}
+      <PrismicNextImage field={page.data.image} className="mb-6" />
       <SliceZone slices={page.data.slices} components={components} />
-    </div>
+    </>
   );
 }
 
