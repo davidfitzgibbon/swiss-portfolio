@@ -19,13 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={clsx(
-          "bg-white p-6 font-regular text-black antialiased",
-          monaSans.variable,
-        )}
-      >
+    <html lang="en" className={monaSans.variable}>
+      <body className="font-regular bg-white p-6 text-black antialiased">
         <Header />
         <Separator />
         <main className="mx-auto w-full max-w-2xl">{children}</main>

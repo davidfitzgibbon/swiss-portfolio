@@ -19,7 +19,6 @@ const Experience = ({ slice }: ExperienceProps) => {
       className="mb-8"
     >
       <Heading as="h1">Experience</Heading>
-
       <ul className="flex flex-col gap-8">
         {slice.primary.experiences.map((item) => (
           <ExperienceItem

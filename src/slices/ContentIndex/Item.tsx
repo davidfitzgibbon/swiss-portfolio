@@ -19,7 +19,7 @@ export function Item({
     >
       <svg
         viewBox="0 0 70 100"
-        className="block h-[1.5em] w-[1em] translate-x-[-50%] transition-transform duration-200 group-hover:translate-x-[0%]"
+        className="block h-[1.5em] w-[1em] translate-x-[-50%] transition-transform duration-200 group-hover:-translate-x-[0%]"
       >
         <path
           className="fill-black group-hover:fill-red"
@@ -32,7 +32,7 @@ export function Item({
       </div>
       <svg
         viewBox="0 0 70 100"
-        className="block h-[1.5em] w-[1em] translate-x-[50%] transition-transform duration-200 group-hover:translate-x-[0%]"
+        className="block h-[1.5em] w-[1em] translate-x-[50%] transition-transform duration-200 group-hover:-translate-x-[0%]"
       >
         <path
           className="fill-black group-hover:fill-red"

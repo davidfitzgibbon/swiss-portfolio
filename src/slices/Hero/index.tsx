@@ -143,7 +143,7 @@ const Hero = ({ slice }: HeroProps) => {
     return name.split("").map((letter, index) => (
       <span
         key={index}
-        className={`hover:transition-200 inline-block transition-all delay-[3000ms] duration-500 hover:rotate-180 hover:delay-0`}
+        className={`hover:transition-200 inline-block transition-all delay-3000 duration-500 hover:rotate-180 hover:delay-0`}
       >
         {letter}
       </span>
@@ -153,10 +153,10 @@ const Hero = ({ slice }: HeroProps) => {
   return (
     <div className="layout">
       <div className="grid justify-items-center text-center uppercase leading-none">
-        <h1 className="startName flex w-[min-content] font-bold text-6xl text-red opacity-0">
+        <h1 className="startName flex w-min font-bold text-6xl text-red opacity-0">
           {renderLetters(slice.primary.startname)}
         </h1>
-        <h1 className="endName mb-6 flex w-[min-content] font-extraBoldNarrow text-9xl text-black opacity-0">
+        <h1 className="endName mb-6 flex w-min font-extra-bold-narrow text-9xl text-black opacity-0">
           {renderLetters(slice.primary.endname)}
         </h1>
       </div>

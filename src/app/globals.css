@@ -1,6 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-red: red;
+
+  --font-extra-bold-narrow: var(--font-mona-sans);
+  --font-extra-bold-narrow--font-variation-settings: "wght" 800, "wdth" 75;
+
+  --font-ultra-light: var(--font-mona-sans);
+  --font-ultra-light--font-variation-settings: "wght" 200, "wdth" 100;
+
+  --font-light: var(--font-mona-sans);
+  --font-light--font-variation-settings: "wght" 300, "wdth" 100;
+
+  --font-regular: var(--font-mona-sans);
+  --font-regular--font-variation-settings: "wght" 400, "wdth" 100;
+
+  --font-black: var(--font-mona-sans);
+  --font-black--font-variation-settings: "wght" 900, "wdth" 100;
+
+  --font-ultra-light-wide: var(--font-mona-sans);
+  --font-ultra-light-wide--font-variation-settings: "wght" 200, "wdth" 125;
+}
 
 strong {
   font-variation-settings:

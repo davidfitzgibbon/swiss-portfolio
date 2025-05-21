@@ -75,8 +75,8 @@ export function ExperienceItem({
         </svg>
         <div className="text grow overflow-hidden">
           <p className="type translate-x-[-100px] font-light">{type}</p>
-          <p className="task translate-x-[-100%] font-black text-2xl">{task}</p>
-          <p className="institution translate-x-[-100%] font-ultraLight text-2xl">
+          <p className="task -translate-x-full font-black text-2xl">{task}</p>
+          <p className="institution -translate-x-full font-ultra-light text-2xl">
             {institution}
           </p>
         </div>

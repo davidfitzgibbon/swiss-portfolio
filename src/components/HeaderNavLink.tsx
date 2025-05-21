@@ -17,7 +17,7 @@ export function HeaderNavLink({ field, children }: HeaderNavLinkProps) {
   const isActive = href === "/" ? pathname === href : pathname.startsWith(href);
 
   return (
-    <Link href={href} className={clsx("uppercase", isActive && "font-bold")}>
+    <Link href={href} className={clsx("uppercase", isActive && "font-black")}>
       {children ?? field.text}
     </Link>
   );
