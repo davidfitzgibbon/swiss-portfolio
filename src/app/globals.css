@@ -1,50 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@plugin "@tailwindcss/typography";
+@import "tailwindcss";
 
-p {
-  margin: 1em 0 ;
-  &:first-of-type {
-    margin-top: 0;
-  }
+@theme {
+  --color-red: red;
+
+  --font-extra-bold-narrow: var(--font-mona-sans);
+  --font-extra-bold-narrow--font-variation-settings: "wght" 800, "wdth" 75;
+
+  --font-ultra-light: var(--font-mona-sans);
+  --font-ultra-light--font-variation-settings: "wght" 200, "wdth" 100;
+
+  --font-light: var(--font-mona-sans);
+  --font-light--font-variation-settings: "wght" 300, "wdth" 100;
+
+  --font-regular: var(--font-mona-sans);
+  --font-regular--font-variation-settings: "wght" 400, "wdth" 100;
+
+  --font-black: var(--font-mona-sans);
+  --font-black--font-variation-settings: "wght" 900, "wdth" 100;
+
+  --font-ultra-light-wide: var(--font-mona-sans);
+  --font-ultra-light-wide--font-variation-settings: "wght" 200, "wdth" 125;
 }
+
 strong {
-  font-variation-settings: "wght" 600, "wdth" 100;
+  font-variation-settings:
+    "wght" 600,
+    "wdth" 100;
 }
-.richText li {
-  list-style: disc;
-}
-
-canvas {
-  width: 100%;
-  max-width: 100%;
-}
-.layout {
-  --gap: clamp(1rem, 6vw, 3rem);
-  --outset: minmax(var(--gap), 1fr);
-  --inset: min(50ch, 100% - var(--gap) * 2);
-  --content: minmax(0, 5rem);
-
-  display: grid;
-  grid-template-columns:
-    [outset-start] var(--outset)
-    [content-start] var(--content)
-    [inset-start] var(--inset) [inset-end]
-    var(--content) [content-end]
-    var(--outset) [outset-end];
-  
-  }
-.layout > * {
-  grid-column: content;
-}
-.layout > .inset {
-  grid-column: inset;
-}
-.layout > .content {
-  grid-column: content;
-}
-.layout > .outset {
-  grid-column: outset;
-}
-

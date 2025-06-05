@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { isFilled, asImageSrc } from "@prismicio/client";
+import { asImageSrc, isFilled } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 

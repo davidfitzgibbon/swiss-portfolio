@@ -1,81 +1,89 @@
-"use client"
-import { useGSAP } from "@gsap/react"
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useRef } from "react";
 import { RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import gsap from "gsap"
-import { ScrollTrigger } from 'gsap/all';
-import { useRef } from "react"
+import { components } from "@/richTextComponents";
 
-gsap.registerPlugin(useGSAP,ScrollTrigger)
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-type Props = {
+type ExperienceItemProps = {
   institution: string | null;
   year: number | null;
   task: string | null;
   type: string | null;
   description: RichTextField;
-}
+};
 
-export default function TechItem({institution, year, task, type, description}: Props) {
-  const container = useRef<HTMLLIElement>(null)
+export function ExperienceItem({
+  institution,
+  year,
+  task,
+  type,
+  description,
+}: ExperienceItemProps) {
+  const container = useRef<HTMLLIElement>(null);
 
-  useGSAP(()=>{
-    const q = gsap.utils.selector(container.current);
-    const triangle = q('.triangle');
-    const type = q('.type');
-    const task = q('.task');
-    const institution = q('.institution');
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        // markers: true,
-        start: "80px bottom",
-      },
-    })
-    
-    const overlap = "-=.25";
-    tl.addLabel("start")
-      .to(
-        triangle,
-        { y: 0, easing: "power3.out" },
-        overlap
-      )
-      .to(
-        type,
-        { x: 0, easing: "power3.out" },
-        overlap
-      )
-      .to(
-        task,
-        { x: 0, easing: "power3.out" },
-        overlap
-      )
-      .to(
-        institution,
-        { x: 0, easing: "power3.out" },
-        overlap
-      )
-    
+  useGSAP(
+    () => {
+      const q = gsap.utils.selector(container.current);
+      const triangle = q(".triangle");
+      const type = q(".type");
+      const task = q(".task");
+      const institution = q(".institution");
 
-  },{scope:container})
-  
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          // markers: true,
+          start: "80px bottom",
+        },
+      });
+
+      const overlap = "-=.25";
+      tl.addLabel("start")
+        .to(triangle, { y: 0, easing: "power3.out" }, overlap)
+        .to(type, { x: 0, easing: "power3.out" }, overlap)
+        .to(task, { x: 0, easing: "power3.out" }, overlap)
+        .to(institution, { x: 0, easing: "power3.out" }, overlap);
+    },
+    { scope: container },
+  );
+
   return (
-    <li className="mb-8" ref={container} >
-      <div className='grid grid-cols-[100px,1fr] align-start mb-6 gap-2'>
-      <svg viewBox="0 0 100 80" className="w-full block">
-        <path className="triangle translate-y-[-320px]" fill="red" d="M0,0L100,0L50,80" />
-        <text x="50%" y="20" fontSize="22" dominantBaseline="middle" textAnchor="middle" fill="white">{year}</text>
-      </svg>
-      <div className="text overflow-hidden">
-        <p className="type font-light translate-x-[-100px] m-0">{type}</p>
-        <p className='task text-2xl font-black translate-x-[-100%] m-0'>{task}</p>
-        <p className='institution text-2xl font-ultraLight translate-x-[-100%] m-0'>{institution}</p>
+    <li ref={container}>
+      <div className="align-start mb-6 flex gap-2">
+        <svg viewBox="0 0 100 80" className="block w-[100px] shrink-0">
+          <path
+            className="triangle translate-y-[-320px]"
+            fill="red"
+            d="M0,0L100,0L50,80"
+          />
+          <text
+            x="50%"
+            y="20"
+            fontSize="22"
+            dominantBaseline="middle"
+            textAnchor="middle"
+            fill="white"
+          >
+            {year}
+          </text>
+        </svg>
+        <div className="text grow overflow-hidden">
+          <p className="type translate-x-[-100px] font-light">{type}</p>
+          <p className="task -translate-x-full font-black text-2xl">{task}</p>
+          <p className="institution -translate-x-full font-ultra-light text-2xl">
+            {institution}
+          </p>
+        </div>
       </div>
-      </div>
-      <div className="richText">
-        <PrismicRichText field={description} />
+      <div>
+        <PrismicRichText field={description} components={components} />
       </div>
     </li>
-  )
+  );
 }
