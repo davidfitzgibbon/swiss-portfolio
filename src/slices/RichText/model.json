@@ -1,8 +1,8 @@
 {
-  "id": "text",
+  "id": "rich_text",
   "type": "SharedSlice",
-  "name": "Text",
-  "description": "Text",
+  "name": "RichText",
+  "description": "RichText",
   "variations": [
     {
       "id": "default",
@@ -12,13 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "text": {
+        "richtext": {
           "type": "StructuredText",
           "config": {
-            "label": "Text",
+            "label": "RichText",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,image"
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

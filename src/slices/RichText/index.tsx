@@ -5,19 +5,16 @@ import { components } from "@/richTextComponents";
 /**
  * Props for `TextBlock`.
  */
-export type TextProps = SliceComponentProps<Content.TextSlice>;
+export type TextProps = SliceComponentProps<Content.RichTextSlice>;
 
 /**
  * Component for "TextBlock" Slices.
  */
 const TextBlock = ({ slice }: TextProps) => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      <PrismicRichText field={slice.primary.text} components={components} />
-    </section>
+    <div className="prose mx-auto mt-20">
+      <PrismicRichText field={slice.primary.richtext} />
+    </div>
   );
 };
 
