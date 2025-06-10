@@ -194,7 +194,7 @@ const Hero = ({ slice }: HeroProps) => {
         {slice.primary.title}
       </h2>
 
-      <p className="description mx-auto mt-8 max-w-[65ch] text-xl/9 opacity-0">
+      <p className="description mx-auto mt-8 max-w-[64ch] text-xl/9 opacity-0">
         {slice.primary.description}
       </p>
     </div>
