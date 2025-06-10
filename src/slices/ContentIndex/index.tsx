@@ -37,7 +37,7 @@ const ContentIndex = async ({ slice }: ContentIndexProps) => {
           <li key={post.id}>
             <Item
               document={post}
-              title={post.data.meta_title}
+              title={post.data.title}
               viewMoreText={slice.primary.view_more_text}
             />
           </li>

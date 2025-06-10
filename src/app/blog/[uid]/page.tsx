@@ -18,7 +18,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     <>
       <Heading>{page.data.title}</Heading>
       <PrismicNextImage field={page.data.image} className="mb-6" />
-      <SliceZone slices={page.data.slices} components={components} />
+      <div className="prose mx-auto mt-20">
+        <SliceZone slices={page.data.slices} components={components} />
+      </div>
     </>
   );
 }

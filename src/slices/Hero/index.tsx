@@ -31,10 +31,11 @@ const Hero = ({ slice }: HeroProps) => {
 			)`;
   }
   useGSAP(() => {
-    const dur = 0.5;
+    const duration = 1;
+
     function startName() {
       const tl = gsap.timeline({
-        duration: dur,
+        duration,
         opacity: 1,
       });
 
@@ -43,24 +44,29 @@ const Hero = ({ slice }: HeroProps) => {
         duration: 0,
         color: "rgba(255,0,0,0)",
         backgroundImage: lg(0, 0, "red"),
-      });
-      tl.to(".startName", {
-        color: "rgba(255,0,0,0)",
-        backgroundImage: lg(0, 100, "red"),
-      });
-      tl.to(".startName", {
-        color: "rgba(255,0,0,1)",
-        backgroundImage: lg(0, 100, "red"),
-      });
-      tl.to(".startName", {
-        color: "rgba(255,0,0,1)",
-        backgroundImage: lg(100, 100, "red"),
-      });
+      })
+        .to(".startName", {
+          color: "rgba(255,0,0,0)",
+          backgroundImage: lg(0, 100, "red"),
+        })
+        .set(".startName span", {
+          opacity: 1,
+        })
+        .to(".startName", {
+          color: "rgba(255,0,0,1)",
+          backgroundImage: lg(0, 100, "red"),
+        })
+        .to(".startName", {
+          color: "rgba(255,0,0,1)",
+          backgroundImage: lg(100, 100, "red"),
+        });
+
       return tl;
     }
+
     function endName() {
       const tl = gsap.timeline({
-        duration: dur,
+        duration,
       });
 
       tl.to(".endName", {
@@ -68,24 +74,29 @@ const Hero = ({ slice }: HeroProps) => {
         color: "rgba(0,0,0,0)",
         backgroundImage: lg(100, 100, "black"),
         duration: 0,
-      });
-      tl.to(".endName", {
-        color: "rgba(0,0,0,0)",
-        backgroundImage: lg(0, 100, "black"),
-      });
-      tl.to(".endName", {
-        color: "rgba(0,0,0,1)",
-        backgroundImage: lg(0, 100, "black"),
-      });
-      tl.to(".endName", {
-        color: "rgba(0,0,0,1)",
-        backgroundImage: lg(0, 0, "black"),
-      });
+      })
+        .to(".endName", {
+          color: "rgba(0,0,0,0)",
+          backgroundImage: lg(0, 100, "black"),
+        })
+        .set(".endName span", {
+          opacity: 1,
+        })
+        .to(".endName", {
+          color: "rgba(0,0,0,1)",
+          backgroundImage: lg(0, 100, "black"),
+        })
+        .to(".endName", {
+          color: "rgba(0,0,0,1)",
+          backgroundImage: lg(0, 0, "black"),
+        });
+
       return tl;
     }
+
     function triangles() {
       const tl = gsap.timeline({
-        duration: dur,
+        duration,
       });
       tl.to(".endName", {
         // just using endName to waste some time
@@ -95,9 +106,10 @@ const Hero = ({ slice }: HeroProps) => {
       });
       return tl;
     }
+
     function h2() {
       const tl = gsap.timeline({
-        duration: dur,
+        duration,
       });
 
       tl.to(".title", {
@@ -112,9 +124,10 @@ const Hero = ({ slice }: HeroProps) => {
 
       return tl;
     }
+
     function p() {
       const tl = gsap.timeline({
-        duration: dur,
+        duration,
       });
 
       tl.to(".description", {
@@ -133,17 +146,33 @@ const Hero = ({ slice }: HeroProps) => {
     const main = gsap.timeline();
     main
       .add(startName())
-      .add(endName(), `=-${dur * 1.75}`)
-      .add(triangles(), `=-${dur * 2}`)
-      .add(h2(), `=+${dur * 1.0}`)
-      .add(p(), `=-${dur * 1.5}`);
+      .add(endName(), `0`)
+      .add(triangles(), `=-${duration * 2.5}`)
+      .add(h2(), `=-${duration * 0.5}`)
+      .add(p(), `=+${duration * 1.5}`);
   });
+
   const renderLetters = (name: KeyTextField) => {
-    if (!name) return;
+    if (typeof name !== "string" || !name) return null;
     return name.split("").map((letter, index) => (
       <span
         key={index}
-        className={`hover:transition-200 inline-block transition-all delay-3000 duration-500 hover:rotate-180 hover:delay-0`}
+        className="inline-block opacity-0"
+        onMouseEnter={(e) => {
+          gsap.to(e.currentTarget, {
+            rotation: 180,
+            duration: 0.5,
+            ease: "power2.inOut",
+          });
+        }}
+        onMouseLeave={(e) => {
+          gsap.to(e.currentTarget, {
+            rotation: 0,
+            duration: 0.5,
+            delay: 3,
+            ease: "power2.inOut",
+          });
+        }}
       >
         {letter}
       </span>
@@ -152,21 +181,22 @@ const Hero = ({ slice }: HeroProps) => {
 
   return (
     <div className="layout">
-      <div className="grid justify-items-center text-center leading-none uppercase">
-        <h1 className="startName text-red flex w-min text-6xl font-bold opacity-0 md:text-8xl">
+      <h1 className="grid justify-items-center text-center leading-none uppercase">
+        <span className="startName text-red flex w-min text-6xl opacity-0 md:text-8xl">
           {renderLetters(slice.primary.startname)}
-        </h1>
-        <h1 className="endName font-extra-bold-narrow mb-6 flex w-min text-9xl text-black opacity-0">
+        </span>
+        <span className="endName font-extra-bold-narrow flex w-min text-9xl text-black opacity-0">
           {renderLetters(slice.primary.endname)}
-        </h1>
-      </div>
-
+        </span>
+      </h1>
       <Triangles horzCount={10} vertCount={4} start={trianglesStart} />
-
-      <h2 className="title font-regular my-4 text-center text-4xl leading-none uppercase opacity-0 md:my-8">
+      <h2 className="title my-4 text-center text-4xl leading-none font-black uppercase opacity-0 md:my-8">
         {slice.primary.title}
       </h2>
-      <p className="description opacity-0">{slice.primary.description}</p>
+
+      <p className="description mx-auto mt-8 max-w-[64ch] text-xl/9 opacity-0">
+        {slice.primary.description}
+      </p>
     </div>
   );
 };
