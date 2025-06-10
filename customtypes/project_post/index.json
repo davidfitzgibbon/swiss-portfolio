@@ -39,7 +39,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "text": {
+            "rich_text": {
               "type": "SharedSlice"
             }
           }
