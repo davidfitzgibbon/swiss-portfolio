@@ -23,7 +23,7 @@ export default function RootLayout({
       <html lang="en" className={monaSans.variable}>
         <body className="font-regular bg-white p-6 text-black antialiased md:text-xl">
           <Header />
-          <main className="relative mx-auto w-full max-w-5xl py-16">
+          <main className="relative mx-auto min-h-[90vh] w-full max-w-5xl py-16">
             <BorderTriangles />
             {children}
           </main>
