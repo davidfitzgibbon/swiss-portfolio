@@ -11,7 +11,7 @@ export type TextProps = SliceComponentProps<Content.RichTextSlice>;
  */
 const TextBlock = ({ slice }: TextProps) => {
   return (
-    <div className="prose mx-auto mt-20">
+    <div className="prose-zinc prose prose-heading:text-black prose-p:text-black prose-li:text-black mx-auto mt-20">
       <PrismicRichText field={slice.primary.richtext} />
     </div>
   );

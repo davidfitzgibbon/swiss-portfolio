@@ -27,7 +27,7 @@ export function Item({
         />
       </svg>
       <div className="flex flex-1 justify-between px-3">
-        <span className="text-l font-black">{title}</span>
+        <span className="text-2xl font-black">{title}</span>
         <span>{viewMoreText}</span>
       </div>
       <svg

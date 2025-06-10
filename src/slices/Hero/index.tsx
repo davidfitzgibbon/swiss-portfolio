@@ -149,7 +149,7 @@ const Hero = ({ slice }: HeroProps) => {
       .add(endName(), `0`)
       .add(triangles(), `=-${duration * 2.5}`)
       .add(h2(), `=-${duration * 0.5}`)
-      .add(p(), `=+${duration * 1.5}`);
+      .add(p(), `=-${duration * 0.8}`);
   });
 
   const renderLetters = (name: KeyTextField) => {
