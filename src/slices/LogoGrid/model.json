@@ -1,0 +1,46 @@
+{
+  "type": "SharedSlice",
+  "id": "logo_grid",
+  "name": "LogoGrid",
+  "variations": [
+    {
+      "id": "default_grid",
+      "name": "Default Grid",
+      "description": "A standard grid layout for presenting multiple logos, with optional title and description fields.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "logos": {
+          "type": "Group",
+          "config": {
+            "label": "Logos",
+            "fields": {
+              "logo_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo Image"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

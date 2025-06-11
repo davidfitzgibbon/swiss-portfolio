@@ -25,6 +25,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "rich_text": {
+              "type": "SharedSlice"
+            },
+            "logo_grid": {
+              "type": "SharedSlice"
+            },
             "tech_list": {
               "type": "SharedSlice"
             },

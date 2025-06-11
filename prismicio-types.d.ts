@@ -167,6 +167,8 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | RichTextSlice
+  | LogoGridSlice
   | TechListSlice
   | ExperienceSlice
   | BiographySlice
@@ -790,6 +792,86 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *LogoGrid → Default Grid → Primary → Logos*
+ */
+export interface LogoGridSliceDefaultGridPrimaryLogosItem {
+  /**
+   * Logo Image field in *LogoGrid → Default Grid → Primary → Logos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo_grid.default_grid.primary.logos[].logo_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *LogoGrid → Default Grid → Primary*
+ */
+export interface LogoGridSliceDefaultGridPrimary {
+  /**
+   * Title field in *LogoGrid → Default Grid → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo_grid.default_grid.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Description field in *LogoGrid → Default Grid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo_grid.default_grid.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Logos field in *LogoGrid → Default Grid → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logo_grid.default_grid.primary.logos[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  logos: prismic.GroupField<Simplify<LogoGridSliceDefaultGridPrimaryLogosItem>>;
+}
+
+/**
+ * Default Grid variation for LogoGrid Slice
+ *
+ * - **API ID**: `default_grid`
+ * - **Description**: A standard grid layout for presenting multiple logos, with optional title and description fields.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogoGridSliceDefaultGrid = prismic.SharedSliceVariation<
+  "default_grid",
+  Simplify<LogoGridSliceDefaultGridPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LogoGrid*
+ */
+type LogoGridSliceVariation = LogoGridSliceDefaultGrid;
+
+/**
+ * LogoGrid Shared Slice
+ *
+ * - **API ID**: `logo_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogoGridSlice = prismic.SharedSlice<
+  "logo_grid",
+  LogoGridSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -969,6 +1051,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      LogoGridSlice,
+      LogoGridSliceDefaultGridPrimaryLogosItem,
+      LogoGridSliceDefaultGridPrimary,
+      LogoGridSliceVariation,
+      LogoGridSliceDefaultGrid,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
